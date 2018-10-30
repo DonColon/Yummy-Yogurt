@@ -2,15 +2,45 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>de.fh.albsig.dardan</groupId>
+
+	<parent>
+		<groupId>de.fh.albsig.dardan</groupId>
+		<artifactId>yummy-yogurt</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
 	<artifactId>yummy-persist</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	
+
 	<name>yummy-persist</name>
-	<url>http://maven.apache.org</url>
-	
+	<url>https://github.com/DonColon/Yummy-Yogurt/tree/master/yummy-persist</url>
+
+	<organization>
+		<name>Hochschule Albstadt-Sigmaringen</name>
+		<url>https://www.hs-albsig.de/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>86050</id>
+			<name>Dardan Rrafshi</name>
+			<email>rrafshda@hs-albsig.de</email>
+			<organization>Hochschule Albstadt-Sigmaringen</organization>
+			<organizationUrl>https://www.hs-albsig.de/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/DonColon/Yummy-Yogurt/blob/master/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>
