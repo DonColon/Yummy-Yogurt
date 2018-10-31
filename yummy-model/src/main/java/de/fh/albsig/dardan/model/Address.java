@@ -59,19 +59,13 @@ public final class Address implements Serializable
 		this.postalCode = postalCode;
 		this.city = city;
 	}
-
-
+	
+	
 	@Override
 	public String toString() 
 	{
 		return "Address [addressID=" + addressID + ", streetname=" + streetname + ", streetnumber=" + streetnumber
 				+ ", postalCode=" + postalCode + ", city=" + city + "]";
-	}
-
-	@Override
-	protected Address clone()
-	{
-		return new Address(this.streetname, this.streetnumber, this.postalCode, this.city);
 	}
 
 	@Override

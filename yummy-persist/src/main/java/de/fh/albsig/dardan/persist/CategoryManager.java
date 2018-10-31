@@ -9,57 +9,57 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 import de.fh.albsig.dardan.exception.NoSuchRowException;
-import de.fh.albsig.dardan.model.Address;
+import de.fh.albsig.dardan.model.Category;
 
 
-public final class AddressManager 
+public final class CategoryManager 
 {
 	
 	private final EntityManager manager;
 	
 	
-	public AddressManager(final String persistenceUnitName) 
+	public CategoryManager(final String persistenceUnitName) 
 	{
 		final EntityManagerFactory factory = Persistence.createEntityManagerFactory(persistenceUnitName);
 		this.manager = factory.createEntityManager();
 	}
 	
 	
-	public List<Address> listAll() 
+	public List<Category> listAll() 
 	{
-		final TypedQuery<Address> query = manager.createNamedQuery("Address.listAll", Address.class);
+		final TypedQuery<Category> query = manager.createNamedQuery("Category.listAll", Category.class);
 		return query.getResultList();
 	}
 	
-	public Address findByID(final int addressID) 
+	public Category findByID(final int categoryID) 
 			throws NoSuchRowException 
 	{
-		final Address address = manager.find(Address.class, addressID);
-		if(address == null)
+		final Category category = manager.find(Category.class, categoryID);
+		if(category == null)
 			throw new NoSuchRowException();
-		return address;
+		return category;
 	}
 	
-	public void save(final Address address) 
+	public void save(final Category category) 
 	{
 		final EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
-			final Address temp = manager.find(Address.class, address.getID());
+			final Category temp = manager.find(Category.class, category.getID());
 			if(temp == null)
-				manager.persist(address);
+				manager.persist(category);
 			else
-				manager.merge(address);
+				manager.merge(category);
 		transaction.commit();
 	}
 	
-	public void delete(final Address address) 
-			throws NoSuchRowException
+	public void delete(final Category category) 
+			throws NoSuchRowException 
 	{
 		final EntityTransaction transaction = manager.getTransaction();
 		transaction.begin();
-			final Address temp = this.findByID(address.getID());
+			final Category temp = this.findByID(category.getID());
 			if(temp != null)
-				manager.remove(address);
+				manager.remove(category);
 		transaction.commit();
 	}
 	
@@ -68,5 +68,5 @@ public final class AddressManager
 		if(manager != null)
 			manager.close();
 	}
-
+	
 }
