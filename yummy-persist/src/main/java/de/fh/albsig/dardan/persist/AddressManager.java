@@ -15,7 +15,7 @@ import de.fh.albsig.dardan.model.Address;
 public final class AddressManager 
 {
 	
-	private EntityManager manager;
+	private final EntityManager manager;
 	
 	
 	public AddressManager(final String persistenceUnitName) 
