@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.fh.albsig.dardan</groupId>
+		<artifactId>yummy-yogurt</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>yummy-webapp</artifactId>
+	<packaging>war</packaging>
+
+	<name>yummy-webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<organization>
+		<name>Hochschule Albstadt-Sigmaringen</name>
+		<url>https://www.hs-albsig.de/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>86050</id>
+			<name>Dardan Rrafshi</name>
+			<email>rrafshda@hs-albsig.de</email>
+			<organization>Hochschule Albstadt-Sigmaringen</organization>
+			<organizationUrl>https://www.hs-albsig.de/</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/DonColon/Yummy-Yogurt/blob/master/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	
+	
+
+	<build>
+		<finalName>yummy-webapp</finalName>
+	</build>
+</project>
