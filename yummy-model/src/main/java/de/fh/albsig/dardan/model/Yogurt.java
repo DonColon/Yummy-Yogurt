@@ -17,6 +17,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 /*create table Yogurt(
@@ -60,6 +61,9 @@ public final class Yogurt implements Serializable
 		inverseJoinColumns={@JoinColumn(name="ZutatenID")})
 	private List<Ingredient> recipe;
 	
+	@OneToMany(mappedBy="yogurt")
+	private List<Rating> ratings;
+	
 	
 	public Yogurt() {}
 	
@@ -71,14 +75,15 @@ public final class Yogurt implements Serializable
 		this.visible = Boolean.toString(visibility);
 		this.owner = owner;
 		this.recipe = new ArrayList<>();
+		this.ratings = new ArrayList<>();
 	}
 	
 	
 	@Override
 	public String toString() 
 	{
-		return "Yogurt [yogurtID=" + yogurtID + ", name=" + name + ", visibility=" + visible + "\n\towner=" + owner
-				+ "\n\trecipe=" + recipe + "]";
+		return "Yogurt [yogurtID=" + yogurtID + ", name=" + name + ", visibility=" + visible 
+				+ "\n\towner=" + owner + "\n\trecipe=" + recipe + "]";
 	}
 
 	@Override
@@ -125,6 +130,14 @@ public final class Yogurt implements Serializable
 	{
 		Objects.requireNonNull(ingredient);
 		this.recipe.add(ingredient);
+	}
+
+	public List<Rating> getRatings() {return Collections.unmodifiableList(ratings);}
+
+	public void rate(final Rating rating) 
+	{
+		Objects.requireNonNull(rating);
+		this.ratings.add(rating);
 	}
 
 }

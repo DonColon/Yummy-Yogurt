@@ -4,11 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Bewertung(
@@ -29,8 +32,12 @@ public final class Rating implements Serializable
 	private static final long serialVersionUID = 5767727589601503395L;
 
 	
-	@EmbeddedId
-	private RatingID ratingID;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="RatingGenerator")
+	@SequenceGenerator(name="RatingGenerator", 
+		sequenceName="RatingSequence", allocationSize=1)
+	@Column(name="ID")
+	private int ratingID;
 	
 	@ManyToOne
 	@JoinColumn(name="BenutzerID", insertable=false, updatable=false)
@@ -51,7 +58,6 @@ public final class Rating implements Serializable
 		Objects.requireNonNull(evaluator, "evaluator is null");
 		Objects.requireNonNull(yogurt, "yogurt is null");
 		
-		this.ratingID = new RatingID(evaluator.getID(), yogurt.getID());
 		this.evaluator = evaluator;
 		this.yogurt = yogurt;
 		this.rating = rating;
@@ -61,8 +67,8 @@ public final class Rating implements Serializable
 	@Override
 	public String toString() 
 	{
-		return "Rating [ratingID=" + ratingID + ", user=" + evaluator 
-				+ ", yogurt=" + yogurt + ", rating=" + rating + "]";
+		return "Rating [ratingID=" + ratingID + "\n\tevaluator=" + evaluator 
+				+ "\n\tyogurt=" + yogurt + "\n\trating=" + rating + "]";
 	}
 
 	@Override
@@ -96,7 +102,7 @@ public final class Rating implements Serializable
 		this.rating = rating;
 	}
 
-	public RatingID getID() {return ratingID;}
+	public int getID() {return ratingID;}
 
 	public User getEvaluator() {return evaluator;}
 

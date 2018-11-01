@@ -10,10 +10,10 @@ import javax.persistence.TypedQuery;
 
 import de.fh.albsig.dardan.exception.NoSuchRowException;
 import de.fh.albsig.dardan.model.Rating;
-import de.fh.albsig.dardan.model.RatingID;
 
 
-public final class RatingManager {
+public final class RatingManager 
+{
 	
 	private final EntityManager manager;
 	
@@ -31,7 +31,7 @@ public final class RatingManager {
 		return query.getResultList();
 	}
 	
-	public Rating findByID(final RatingID ratingID) 
+	public Rating findByID(final int ratingID) 
 			throws NoSuchRowException 
 	{
 		final Rating rating = manager.find(Rating.class, ratingID);
