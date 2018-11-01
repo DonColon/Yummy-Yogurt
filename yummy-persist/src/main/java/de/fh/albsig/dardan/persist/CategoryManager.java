@@ -22,6 +22,8 @@ public final class CategoryManager
 	{
 		final EntityManagerFactory factory = Persistence.createEntityManagerFactory(persistenceUnitName);
 		this.manager = factory.createEntityManager();
+		
+		factory.close();
 	}
 	
 	

@@ -22,6 +22,8 @@ public final class RatingManager
 	{
 		final EntityManagerFactory factory = Persistence.createEntityManagerFactory(persistenceUnitName);
 		this.manager = factory.createEntityManager();
+		
+		factory.close();
 	}
 	
 	

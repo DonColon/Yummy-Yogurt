@@ -21,7 +21,6 @@ import javax.persistence.Table;
     constraint checkMenge check(Menge > 0)
 );*/
 
-
 @Entity
 @Table(name="Bestellposition")
 @NamedQuery(name="OrderItem.listAll", query="select i from OrderItem i")

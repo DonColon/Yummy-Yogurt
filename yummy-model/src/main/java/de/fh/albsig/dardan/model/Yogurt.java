@@ -121,23 +121,24 @@ public final class Yogurt implements Serializable
 	{
 		this.visible = Boolean.toString(visible);
 	}
-
-	public User getOwner() {return owner;}
-
-	public List<Ingredient> getRecipe() {return Collections.unmodifiableList(recipe);}
+	
 	
 	public void addToRecipe(final Ingredient ingredient) 
 	{
 		Objects.requireNonNull(ingredient);
 		this.recipe.add(ingredient);
 	}
-
-	public List<Rating> getRatings() {return Collections.unmodifiableList(ratings);}
-
+	
 	public void rate(final Rating rating) 
 	{
 		Objects.requireNonNull(rating);
 		this.ratings.add(rating);
 	}
+
+	public User getOwner() {return owner;}
+
+	public List<Ingredient> getRecipe() {return Collections.unmodifiableList(recipe);}
+
+	public List<Rating> getRatings() {return Collections.unmodifiableList(ratings);}
 
 }
