@@ -1,0 +1,113 @@
+/*************************************************************************************/
+/* Yummy Yogurt - Create your very own Frozen Yogurt                                 */
+/* Copyright 2018 Dardan Rrafshi                                                     */
+/* Licensed under MIT (https://github.com/DonColon/Yummy-Yogurt/blob/master/LICENSE) */
+/*************************************************************************************/
+
+/*--- Fonts -------------------------------------------------------------------------*/
+@font-face {
+    font-family: 'Century';
+    src: url('../fonts/CenturySchoolbook-Regular-webfont.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Century';
+    src: url('../fonts/CenturySchoolbook-Italic-webfont.woff2') format('woff2');
+    font-style: italic;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Century';
+    src: url('../fonts/CenturySchoolbook-Bold-webfont.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Harman Retro';
+    src: url('../fonts/Harman-Retro-webfont.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Harman Sans';
+    src: url('../fonts/Harman-Sans-webfont.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Harman Simple';
+    src: url('../fonts/Harman-Simple-webfont.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 300;
+}
+
+/*--- Colors ------------------------------------------------------------------------*/
+:root {
+    --ice-blue: rgb(88, 128, 189);
+    --yummy-blue: rgb(17, 144, 204);
+    --middle-blue: rgb(93, 157, 192);
+    --pistachio-green: rgb(213, 236, 190);
+    --middle-green: rgb(181, 222, 156);
+    --rose: rgb(251, 181, 218);
+    --flamingo: rgb(252, 202, 229);
+    --salmon: rgb(255, 204, 173);
+    --cream: rgb(255, 235, 192);
+    --vanilla: rgb(254, 243, 187);
+    --lemon: rgb(254, 255, 153);
+}
+
+/*--- Basics ------------------------------------------------------------------------*/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-size: 18px;
+    line-height: 1.6;
+
+    font-family: 'Century';
+    color: rgb(93 96 99);
+    background-color: rgb(240, 240, 240);
+}
+
+header, nav, footer,
+article, section, figure, figcaption {
+    display: block;
+}
+
+h1 {
+    font-family: 'Harman Retro';
+    font-weight: normal;
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Harman Sans';
+    font-weight: normal;
+}
+
+a:link {
+    color: var(--ice-blue);
+    text-decoration: none;
+}
+
+a:visited {
+    color: var(--middle-blue);
+}
+
+a:hover, a:visited:hover {
+    color: var(--yummy-blue);
+    border-bottom: 1px solid var(--yummy-blue);
+}
+
+a:active, a:visited:active {
+    color: var(--ice-blue);
+}
+
+/*--- Own Styles --------------------------------------------------------------------*/
