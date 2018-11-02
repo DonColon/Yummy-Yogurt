@@ -74,10 +74,10 @@ body {
 
     font-family: 'Century';
     color: rgb(93 96 99);
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(230, 230, 235);
 }
 
-header, nav, footer,
+header, nav, aside, main, footer,
 article, section, figure, figcaption {
     display: block;
 }
@@ -103,7 +103,7 @@ a:visited {
 
 a:hover, a:visited:hover {
     color: var(--yummy-blue);
-    border-bottom: 1px solid var(--yummy-blue);
+    text-decoration: underline;
 }
 
 a:active, a:visited:active {
@@ -111,3 +111,6 @@ a:active, a:visited:active {
 }
 
 /*--- Own Styles --------------------------------------------------------------------*/
+.font-simple {
+    font-family: 'Harman Simple';
+}
