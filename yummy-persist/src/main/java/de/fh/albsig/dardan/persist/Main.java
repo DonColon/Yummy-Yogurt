@@ -13,27 +13,27 @@ public class Main
 	{
 		YogurtManager yogurtManager = new YogurtManager("YummyYogurt");
 
-		try {
-			Yogurt yogurt = yogurtManager.findByName("Banana Awesome");
-//			System.out.println(yogurt);
-			
-			List<Rating> ratings = yogurt.getRatings();
-			
-			for(Rating rating : ratings)
-				System.out.println(rating);
-			
-			yogurtManager.close();
-		} catch (NoSuchRowException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Yogurt yogurt = yogurtManager.findByName("Banana Awesome");
+////			System.out.println(yogurt);
+//			
+//			List<Rating> ratings = yogurt.getRatings();
+//			
+//			for(Rating rating : ratings)
+//				System.out.println(rating);
+//			
+//			yogurtManager.close();
+//		} catch (NoSuchRowException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
-//		List<Yogurt> yogurtList = yogurtManager.listAll();
-//		
-//		for(Yogurt y : yogurtList)
-//			System.out.println(y);
+		List<Yogurt> yogurtList = yogurtManager.listAll();
 		
-//		yogurtManager.close();
+		for(Yogurt y : yogurtList)
+			System.out.println(y);
+		
+		yogurtManager.close();
 	}
 	
 }

@@ -22,8 +22,6 @@ public final class YogurtManager
 	{
 		final EntityManagerFactory factory = Persistence.createEntityManagerFactory(persistenceUnitName);
 		this.manager = factory.createEntityManager();
-		
-		factory.close();
 	}
 	
 	
