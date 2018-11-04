@@ -75,8 +75,36 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Yummy Yogurt</h1>
+    <main class="container">
+        <h1 class="mt-4 mb-3">Anmeldung</h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Anmeldung</li>
+        </ol>
+
+        <section class="row">
+            <div class="col-lg-6 mb-3">
+                <form name="sign-in-form" id="sign-in-form" action="sign-in.js" method="post">
+                    <div class="form-group">
+                        <label for="email"><strong>E-Mail:</strong></label>
+                        <input class="form-control" type="email" name="email" id="email" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password"><strong>Passwort:</strong></label>
+                        <input class="form-control" type="password" name="password" id="password" required/>
+                    </div>
+
+                    <button class="btn btn-outline-ice-blue btn-lg mb-3 font-harman-simple" type="submit" name="sign-in" id="sign-in" form="sign-in-form">
+                        Anmelden
+                    </button>
+                </form>
+
+                <hr/>
+                <a class="font-harman-simple" href="sign-up.html">Ich besitze noch keinen Yummy-Yogurt-Account</a>
+            </div>
+        </section>
     </main>
 
     <!-- Main Footer -->

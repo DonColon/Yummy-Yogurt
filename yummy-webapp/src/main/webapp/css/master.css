@@ -156,3 +156,39 @@ a:active, a:visited:active {
 .textarea-fixed {
     resize: none;
 }
+
+.btn-outline-ice-blue {
+  color: var(--ice-blue);
+  background-color: transparent;
+  background-image: none;
+  border-color: var(--ice-blue);
+}
+
+.btn-outline-ice-blue:hover {
+  color: #fff;
+  background-color: var(--ice-blue);
+  border-color: var(--ice-blue);
+}
+
+.btn-outline-ice-blue:focus, .btn-outline-ice-blue.focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.btn-outline-ice-blue.disabled, .btn-outline-ice-blue:disabled {
+  color: var(--ice-blue);
+  background-color: transparent;
+}
+
+.btn-outline-ice-blue:not(:disabled):not(.disabled):active,
+.btn-outline-ice-blue:not(:disabled):not(.disabled).active,
+.show > .btn-outline-ice-blue.dropdown-toggle {
+  color: #fff;
+  background-color: var(--ice-blue);
+  border-color: var(--ice-blue);
+}
+
+.btn-outline-ice-blue:not(:disabled):not(.disabled):active:focus,
+.btn-outline-ice-blue:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-ice-blue.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
