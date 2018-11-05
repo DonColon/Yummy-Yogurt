@@ -124,6 +124,8 @@ a:active, a:visited:active {
 }
 
 /*--- Own Styles --------------------------------------------------------------------*/
+
+/*------ Icon Utilities -------------------------------------------------------------*/
 .social-media-icon {
     font-size: 35px;
     text-align: center;
@@ -137,6 +139,13 @@ a:active, a:visited:active {
     opacity: 0.7;
 }
 
+.payment-icon {
+    font-size: 48px;
+    text-align: center;
+    color: rgb(93, 96, 99);
+}
+
+/*------ Footer ----------------------------------------------------------------------*/
 .main-footer {
     position: absolute;
     right: 0;
@@ -145,18 +154,22 @@ a:active, a:visited:active {
     height: 200px;
 }
 
+/*------ Font Utilities --------------------------------------------------------------*/
 .font-harman-simple {
     font-family: 'Harman Simple';
 }
 
+/*------ Background Utilities --------------------------------------------------------*/
 .bg-white-transparent {
     background-color: rgba(255, 255, 255, 0.75);
 }
 
+/*------ Form Utilities --------------------------------------------------------------*/
 .textarea-fixed {
     resize: none;
 }
 
+/*------ Button Utilities ----------------------------------------------------*/
 .btn-outline-ice-blue {
   color: var(--ice-blue);
   background-color: transparent;

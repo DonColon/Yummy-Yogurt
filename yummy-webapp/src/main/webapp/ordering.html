@@ -10,7 +10,7 @@
     <meta name="description" content="Erstellen Sie sich Ihren eigenen Becher und holen Sie sich die FroYo Experience nach Hause!"/>
     <meta name="keywords" content="Frozen Yogurt, FroYo, Joghurt, Eiskrem, Speiseeis, Softeis, Dessert, Mixen, Toppings"/>
 
-    <title>Yummy Yogurt - Home</title>
+    <title>Yummy Yogurt - Bestellung</title>
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
@@ -75,8 +75,155 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Yummy Yogurt</h1>
+    <main class="container">
+        <h1 class="mt-4 mb-3">Bestellung</h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="shopping-cart.html">Warenkorb</a></li>
+            <li class="breadcrumb-item">Bestellung</li>
+        </ol>
+
+        <section class="row">
+            <div class="col-md-6 mb-3">
+                <h3 class="mt-4 mb-3">Lieferadresse</h3>
+                <p>
+                    Dardan Rrafshi        <br/>
+                    Bei der Schule 12     <br/>
+                    88515 Langenenslingen
+                </p>
+
+                <button class="btn btn-outline-ice-blue btn-lg font-harman-simple mt-4 mb-3" type="button" data-toggle="modal" data-target="#address-modal">
+                    Adresse ändern
+                </button>
+
+                <div class="modal fade" tabindex="-1" role="dialog" id="address-modal" aria-labelledby="address-modal-label" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Adresse ändern</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <form name="change-address-form" id="change-address-form" action="address.js" method="post">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="streetname"><strong>Straßenname</strong></label>
+                                                <input class="form-control" type="text" name="streetname" id="streetname" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="streetnumber"><strong>Straßennummer</strong></label>
+                                                <input class="form-control" type="text" name="streetnumber" id="streetnumber" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="postalcode"><strong>PLZ</strong></label>
+                                                <input class="form-control" type="text" name="postalcode" id="postalcode" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="city"><strong>Wohnort</strong></label>
+                                                <input class="form-control" type="text" name="city" id="city" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button class="btn btn-outline-ice-blue font-harman-simple" type="submit" name="change-address" id="change-address" form="change-address-form">
+                                    Save changes
+                                </button>
+                                <button class="btn btn-outline-secondary font-harman-simple" type="button" data-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h3 class="mt-4 mb-3">Zahlungsmethode</h3>
+
+                <div class="row">
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="paypal" value="option-paypal" checked/>
+                            <label class="form-check-label" for="paypal">
+                                <span class="payment-icon fab fa-cc-paypal"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="amazon-pay" value="option-amazon-pay"/>
+                            <label class="form-check-label" for="amazon-pay">
+                                <span class="payment-icon fab fa-cc-amazon-pay"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="apple-pay" value="option-apple-pay"/>
+                            <label class="form-check-label" for="apple-pay">
+                                <span class="payment-icon fab fa-cc-apple-pay"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="stripe" value="option-stripe"/>
+                            <label class="form-check-label" for="stripe">
+                                <span class="payment-icon payment-icon fab fa-cc-stripe"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="visa" value="option-visa"/>
+                            <label class="form-check-label" for="visa">
+                                <span class="payment-icon fab fa-cc-visa"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="mastercard" value="option-mastercard"/>
+                            <label class="form-check-label" for="mastercard">
+                                <span class="payment-icon fab fa-cc-mastercard"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="american-express" value="option-american-express"/>
+                            <label class="form-check-label" for="american-express">
+                                <span class="payment-icon fab fa-cc-amex"></span>
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="payment" id="jcb" value="option-jcb"/>
+                            <label class="form-check-label" for="jcb">
+                                <span class="payment-icon fab fa-cc-jcb"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
     </main>
 
     <!-- Main Footer -->
