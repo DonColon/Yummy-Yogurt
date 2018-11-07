@@ -140,7 +140,7 @@ a:active, a:visited:active {
 }
 
 /*--------- Payment Icons ------------------------------------------------------------*/
-.cc-selector input {
+.payment-selector input {
     margin: 0;
     padding: 0;
     -webkit-appearance: none;
@@ -148,20 +148,11 @@ a:active, a:visited:active {
             appearance: none;
 }
 
-.cc-selector input:active +.drinkcard-cc{opacity: .9;}
-.cc-selector input:checked +.drinkcard-cc {
-    -webkit-filter: none;
-       -moz-filter: none;
-            filter: none;
-}
-
-.payment-cc {
+.payment-icon {
     cursor: pointer;
     background-size: contain;
     background-repeat: no-repeat;
     display: inline-block;
-    width: 100px;
-    height: 70px;
     -webkit-transition: all 100ms ease-in;
        -moz-transition: all 100ms ease-in;
             transition: all 100ms ease-in;
@@ -170,20 +161,68 @@ a:active, a:visited:active {
             filter: brightness(1.8) grayscale(1) opacity(.7);
 }
 
-.payment-cc:hover{
+.payment-icon:hover {
     -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
        -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
             filter: brightness(1.2) grayscale(.5) opacity(.9);
 }
 
+.payment-selector input:active +.payment-icon {
+    opacity: .9;
+}
+
+.payment-selector input:checked +.payment-icon {
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+
+.paypal {
+    width: 100px;
+    height: 95px;
+    background-image: url('../images/payments/paypal.svg');
+}
+
+.amazon-pay {
+    width: 100px;
+    height: 95px;
+    background-image: url('../images/payments/amazon-pay.svg');
+}
+
+.apple-pay {
+    width: 100px;
+    height: 95px;
+    background-image: url('../images/payments/apple-pay.jpg');
+}
+
+.stripe {
+    width: 100px;
+    height: 95px;
+    background-image: url('../images/payments/stripe.svg');
+}
+
 .mastercard {
+    width: 100px;
+    height: 70px;
     background-image: url('../images/payments/mastercard.svg');
 }
 
-.payment-icon {
-    font-size: 48px;
-    text-align: center;
-    color: rgb(93, 96, 99);
+.visa {
+    width: 100px;
+    height: 70px;
+    background-image: url('../images/payments/visa.svg');
+}
+
+.american-express {
+    width: 100px;
+    height: 95px;
+    background-image: url('../images/payments/american-express.svg');
+}
+
+.jcb {
+    width: 100px;
+    height: 95px;
+    background-image: url('../images/payments/jcb.svg');
 }
 
 /*------ Footer ----------------------------------------------------------------------*/

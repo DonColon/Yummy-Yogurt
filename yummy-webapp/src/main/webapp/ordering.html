@@ -145,10 +145,10 @@
 
                             <div class="modal-footer">
                                 <button class="btn btn-outline-ice-blue font-harman-simple" type="submit" name="change-address" id="change-address" form="change-address-form">
-                                    Save changes
+                                    Speichern
                                 </button>
                                 <button class="btn btn-outline-secondary font-harman-simple" type="button" data-dismiss="modal">
-                                    Close
+                                    Abbruch
                                 </button>
                             </div>
                         </div>
@@ -159,69 +159,127 @@
             <div class="col-md-6 mb-3">
                 <h3 class="mt-4 mb-3">Zahlungsmethode</h3>
 
-                <div class="row">
-                    <div class="col-sm-6 mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="paypal" value="option-paypal" checked/>
-                            <label class="form-check-label" for="paypal">
-                                <span class="payment-icon fab fa-cc-paypal"></span>
-                            </label>
-                        </div>
+                <div class="payment-selector">
+                    <input type="radio" name="payment" id="paypal" value="option-paypal" checked/>
+                    <label class="payment-icon paypal" for="paypal"></label>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="amazon-pay" value="option-amazon-pay"/>
-                            <label class="form-check-label" for="amazon-pay">
-                                <span class="payment-icon fab fa-cc-amazon-pay"></span>
-                            </label>
-                        </div>
+                    <input type="radio" name="payment" id="amazon-pay" value="option-amazon-pay"/>
+                    <label class="payment-icon amazon-pay" for="amazon-pay"></label>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="apple-pay" value="option-apple-pay"/>
-                            <label class="form-check-label" for="apple-pay">
-                                <span class="payment-icon fab fa-cc-apple-pay"></span>
-                            </label>
-                        </div>
+                    <input type="radio" name="payment" id="apple-pay" value="option-apple-pay"/>
+                    <label class="payment-icon apple-pay" for="apple-pay"></label>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="stripe" value="option-stripe"/>
-                            <label class="form-check-label" for="stripe">
-                                <span class="payment-icon payment-icon fab fa-cc-stripe"></span>
-                            </label>
-                        </div>
-                    </div>
+                    <input type="radio" name="payment" id="stripe" value="option-stripe"/>
+                    <label class="payment-icon stripe" for="stripe"></label>
 
-                    <div class="col-sm-6 mb-3">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="visa" value="option-visa"/>
-                            <label class="form-check-label" for="visa">
-                                <span class="payment-icon fab fa-cc-visa"></span>
-                            </label>
-                        </div>
+                    <input type="radio" name="payment" id="american-express" value="option-american-express"/>
+                    <label class="payment-icon american-express" for="american-express"></label>
 
-                        <div class="cc-selector">
-                            <input type="radio" name="payment" id="mastercard" value="option-mastercard"/>
-                            <label class="payment-cc" for="mastercard"></label>
-                        </div>
+                    <input type="radio" name="payment" id="jcb" value="option-jcb"/>
+                    <label class="payment-icon jcb" for="jcb"></label>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="american-express" value="option-american-express"/>
-                            <label class="form-check-label" for="american-express">
-                                <span class="payment-icon fab fa-cc-amex"></span>
-                            </label>
-                        </div>
+                    <input type="radio" name="payment" id="visa" value="option-visa"/>
+                    <label class="payment-icon visa" for="visa"></label>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="payment" id="jcb" value="option-jcb"/>
-                            <label class="form-check-label" for="jcb">
-                                <span class="payment-icon fab fa-cc-jcb"></span>
-                            </label>
-                        </div>
-                    </div>
+                    <input type="radio" name="payment" id="mastercard" value="option-mastercard"/>
+                    <label class="payment-icon mastercard" for="mastercard"></label>
                 </div>
             </div>
         </section>
 
+        <section class="row">
+            <div class="col-lg-12">
+                <h3 class="mt-4 mb-3">Artikel</h3>
 
+                <form name="ordering-form" id="ordering-form" action="thanks.html" method="post">
+                    <div class="table-responsive">
+                        <table class="table table-light table-bordered">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th class="font-harman-simple" scope="col"></th>
+                                    <th class="font-harman-simple" scope="col">Bild</th>
+                                    <th class="font-harman-simple" scope="col">Produkt</th>
+                                    <th class="font-harman-simple" scope="col">Einzelpreis</th>
+                                    <th class="font-harman-simple" scope="col">Menge</th>
+                                    <th class="font-harman-simple" scope="col">Gesamtpreis</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle">
+                                        <p class="text-center"><span class="fas fa-times"></span></p>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <a href="product-info.html">
+                                            <img class="img-fluid img-thumbnail mx-auto d-block" src="images/yogurts/yogurt-08.jpg" alt="Banana Awesome" width="100"/>
+                                        </a>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <p class="text-center">Banana Awesome</p>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <p class="text-center">3,50€</p>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <input class="form-control mx-auto d-block" type="number" value="1" min="1" max="2000" step="1"/>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <p class="text-center">3,50€</p>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="align-middle">
+                                        <p class="text-center"><span class="fas fa-times"></span></p>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <a href="product-info.html">
+                                            <img class="img-fluid img-thumbnail mx-auto d-block" src="images/yogurts/yogurt-02.jpg" alt="Nuts Royal" width="100"/>
+                                        </a>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <p class="text-center">Nuts Royal</p>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <p class="text-center">3,50€</p>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <input class="form-control mx-auto d-block" type="number" value="1" min="1" max="2000" step="1"/>
+                                    </td>
+
+                                    <td class="align-middle">
+                                        <p class="text-center">3,50€</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <section class="row my-3">
+                        <div class="col-md-5 ml-auto">
+                            <ul class="list-group font-harman-simple text-right mb-3">
+                                <li class="list-group-item bg-light">Gesamtsumme: <span class="pl-5">7,00€</span></li>
+                                <li class="list-group-item bg-light">inkl. Mwst 19%: <span class="pl-5">1,33€</span></li>
+                                <li class="list-group-item bg-light">Endsumme: <span class="pl-5">8,33€</span></li>
+                            </ul>
+                            <button class="btn btn-outline-ice-blue btn-lg font-harman-simple mb-3" type="submit" name="order" id="order" form="ordering-form">
+                                Kaufen
+                            </button>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </section>
     </main>
 
     <!-- Main Footer -->
