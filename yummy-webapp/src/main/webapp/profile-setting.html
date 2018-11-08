@@ -75,8 +75,85 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Yummy Yogurt</h1>
+    <main class="container">
+        <h1 class="mt-4 mb-3">Profileinstellungen</h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active">Profileinstellungen</li>
+        </ol>
+
+        <section class="row">
+            <div class="col-lg-6 mb-3">
+                <form name="update-profile-form" id="update-profile-form" action="update-profile.js" method="post">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <label for="firstname"><strong>Vorname:</strong></label>
+                                <input class="form-control" type="text" name="firstname" id="firstname" value="Dardan"/>
+                            </div>
+                            <div class="col">
+                                <label for=""><strong>Nachname:</strong></label>
+                                <input class="form-control" type="text" name="familyname" id="familyname" value="Rrafshi"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username"><strong>Benutzername:</strong></label>
+                        <input class="form-control" type="text" name="username" id="username" value="DonColon"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for=""><strong>E-Mail:</strong></label>
+                        <input class="form-control" type="email" name="email" id="email" value="drrafshi@hotmail.de"/>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label><strong>Adresse:</strong></label>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input class="form-control" type="text" name="streetname" id="streetname" placeholder="Straßenname"/>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" name="streetnumber" id="streetnumber" placeholder="Straßennummer"/>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input class="form-control" type="text" name="postalcode" id="postalcode" placeholder="PLZ"/>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" name="city" id="city" placeholder="Wohnort"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="form-group">
+                        <label><strong>Passwort:</strong></label>
+                        <input class="form-control mb-3" type="password" name="old-password" id="old-password" placeholder="Altes Passwort"/>
+                        <input class="form-control mb-3" type="password" name="new-password" id="new-password" placeholder="Neues Passwort"/>
+                        <input class="form-control mb-3" type="password" name="verify-new-password" id="verify-new-password" placeholder="Neues Passwort bestätigen"/>
+                    </div>
+
+                    <button class="btn btn-outline-ice-blue btn-lg mb-3 font-harman-simple" type="submit" name="update-profile" id="update-profile" form="update-profile-form">
+                        Speichern
+                    </button>
+                </form>
+            </div>
+
+            <div class="col-lg-6 mb-3">
+                <img class="img-fluid img-thumbnail mx-auto d-block mb-3" src="http://placehold.it/360x360" alt="Profilbild"/>
+                <div class="custom-file mx-auto d-block w-50">
+                    <input class="custom-file-input" type="file" name="picture" id="picture"/>
+                    <label class="custom-file-label" for="picture">Datei auswählen</label>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Main Footer -->

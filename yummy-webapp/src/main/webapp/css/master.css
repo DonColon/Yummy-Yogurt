@@ -285,3 +285,8 @@ a:active, a:visited:active {
 .show > .btn-outline-ice-blue.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
+
+
+.seperator {
+    border: 1px solid rgb(93, 96, 99);
+}
