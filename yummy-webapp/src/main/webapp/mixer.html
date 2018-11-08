@@ -84,7 +84,7 @@
         </ol>
 
         <section class="row">
-            <div class="col-md-8">
+            <div class="col-lg-8 mb-3">
                 <form name="create-yogurt-form" id="create-yogurt-form" action="create-yogurt.js" method="post">
                     <div class="form-group">
                         <input class="form-control" type="text" name="name" id="name" placeholder="Geben Sie Ihrem FroYo einen Namen" required/>
@@ -94,49 +94,49 @@
                     <hr class="seperator"/>
                     <section class="btn-group-toggle font-harman-simple mb-3" data-toggle="buttons">
                         <label class="btn btn-primary mb-3 active" for="option1">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked/> Bananen-Joghurt
+                            <input type="radio" name="yogurt-base" id="banana-yogurt" autocomplete="off" checked/> Bananen-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option1" autocomplete="off"/> Ananas-Joghurt
+                            <input type="radio" name="yogurt-base" id="pineapple-yogurt" autocomplete="off"/> Ananas-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option2" autocomplete="off"/> Pfirsich-Joghurt
+                            <input type="radio" name="yogurt-base" id="peach-yogurt" autocomplete="off"/> Pfirsich-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option2" autocomplete="off"/> Aprikose-Joghurt
+                            <input type="radio" name="yogurt-base" id="apricot-yogurt" autocomplete="off"/> Aprikose-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option2" autocomplete="off"/> Mango-Joghurt
+                            <input type="radio" name="yogurt-base" id="mango-yogurt" autocomplete="off"/> Mango-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option2" autocomplete="off"/> Maracuja-Joghurt
+                            <input type="radio" name="yogurt-base" id="passion-fruit-yogurt" autocomplete="off"/> Maracuja-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option3" autocomplete="off"/> Erdbeer-Joghurt
+                            <input type="radio" name="yogurt-base" id="strawberry-yogurt" autocomplete="off"/> Erdbeer-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option1" autocomplete="off"/> Kirsch-Joghurt
+                            <input type="radio" name="yogurt-base" id="cherry-yogurt" autocomplete="off"/> Kirsch-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option1" autocomplete="off"/> Himbeer-Joghurt
+                            <input type="radio" name="yogurt-base" id="raspberry-yogurt" autocomplete="off"/> Himbeer-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option4" autocomplete="off"/> Apfel-Joghurt
+                            <input type="radio" name="yogurt-base" id="apple-yogurt" autocomplete="off"/> Apfel-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option5" autocomplete="off"/> Birne-Joghurt
+                            <input type="radio" name="yogurt-base" id="pear-yogurt" autocomplete="off"/> Birne-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option6" autocomplete="off"/> Nuccio-Joghurt
+                            <input type="radio" name="yogurt-base" id="nuccio-yogurt" autocomplete="off"/> Nuccio-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option7" autocomplete="off"/> Schoko-Joghurt
+                            <input type="radio" name="yogurt-base" id="chocolate-yogurt" autocomplete="off"/> Schoko-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option8" autocomplete="off"/> Vanille-Joghurt
+                            <input type="radio" name="yogurt-base" id="vanilla-yogurt" autocomplete="off"/> Vanille-Joghurt
                         </label>
                         <label class="btn btn-primary font-harman-simple mb-3">
-                            <input type="radio" name="options" id="option9" autocomplete="off"/> Light-Joghurt
+                            <input type="radio" name="yogurt-base" id="light-yogurt" autocomplete="off"/> Light-Joghurt
                         </label>
                     </section>
 
@@ -144,86 +144,231 @@
                     <hr class="seperator"/>
                     <section class="btn-group-toggle mb-3" data-toggle="buttons">
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Banane
+                            <input type="checkbox" name="banana" id="banana" autocomplete="off"/> Banane
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Ananas
+                            <input type="checkbox" name="pineapple" id="pineapple" autocomplete="off"/> Ananas
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Birne
+                            <input type="checkbox" name="pear" id="pear" autocomplete="off"/> Birne
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Apfel
+                            <input type="checkbox" name="apple" id="apple" autocomplete="off"/> Apfel
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Pfirsich
+                            <input type="checkbox" name="peach" id="peach" autocomplete="off"/> Pfirsich
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Aprikose
+                            <input type="checkbox" name="apricot" id="apricot" autocomplete="off"/> Aprikose
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Mango
+                            <input type="checkbox" name="mango" id="mango" autocomplete="off"/> Mango
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Maracuja
+                            <input type="checkbox" name="passion-fruit" id="passion-fruit" autocomplete="off"/> Maracuja
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Pflaume
+                            <input type="checkbox" name="plum" id="plum" autocomplete="off"/> Pflaume
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Himbeere
+                            <input type="checkbox" name="raspberry" id="raspberry" autocomplete="off"/> Himbeere
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Erdbeere
+                            <input type="checkbox" name="strawberry" id="strawberry" autocomplete="off"/> Erdbeere
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Johannesbeere
+                            <input type="checkbox" name="currant" id="currant" autocomplete="off"/> Johannisbeere
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Blaubeere
+                            <input type="checkbox" name="blueberry" id="blueberry" autocomplete="off"/> Blaubeere
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Brombeeren
+                            <input type="checkbox" name="blackberry" id="blackberry" autocomplete="off"/> Brombeeren
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Kirsche
+                            <input type="checkbox" name="cherry" id="cherry" autocomplete="off"/> Kirsche
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Granatapfel
+                            <input type="checkbox" name="pomegranate" id="pomegranate" autocomplete="off"/> Granatapfel
                         </label>
                         <label class="btn btn-danger font-harman-simple mb-3">
-                            <input type="checkbox" autocomplete="off"/> Rosinen
+                            <input type="checkbox" name="raisin" id="raisin" autocomplete="off"/> Rosinen
                         </label>
                     </section>
 
                     <h4 class="mt-4 mb-3">Nüsse & Kerne - 0,20€</h4>
                     <hr class="seperator"/>
-                    <section class="mb-3">
-
+                    <section class="btn-group-toggle mb-3" data-toggle="buttons">
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="hazelnut" id="hazelnut" autocomplete="off"/> Haselnuss
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="walnut" id="walnut" autocomplete="off"/> Walnuss
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="macadamia" id="macadamia" autocomplete="off"/> Macadamia
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="almond" id="almond" autocomplete="off"/> Mandeln
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="pistachio" id="pistachio" autocomplete="off"/> Pistazie
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="cashew" id="cashew" autocomplete="off"/> Cashewkerne
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="paranut" id="paranut" autocomplete="off"/> Paranüsse
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="pecan" id="pecan" autocomplete="off"/> Pekannüsse
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="tigernut" id="tigernut" autocomplete="off"/> Tigernüsse
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="hempnut" id="hempnut" autocomplete="off"/> Hanfnüsse
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="sunflower-seed" id="sunflower-seed" autocomplete="off"/> Sonnenblumenkerne
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="pumpkin-seed" id="pumpkin-seed" autocomplete="off"/> Kürbiskerne
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="coco-chips" id="coco-chips" autocomplete="off"/> Kokoschips
+                        </label>
+                        <label class="btn btn-warning font-harman-simple text-white mb-3">
+                            <input type="checkbox" name="coco-rasp" id="coco-rasp" autocomplete="off"/> Kokosraspeln
+                        </label>
                     </section>
 
                     <h4 class="mt-4 mb-3">Schoko - 0,25€</h4>
                     <hr class="seperator"/>
-                    <section class="mb-3">
-
+                    <section class="btn-group-toggle mb-3" data-toggle="buttons">
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                                <input type="checkbox" name="choco-crumble" id="choco-crumble" autocomplete="off"/> Schokostreußel
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="choco-bomb" id="choco-bomb" autocomplete="off"/> Schokobomben
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="choco-pad" id="choco-pad" autocomplete="off"/> Schokoplättchen
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="white-choco-pad" id="white-choco-pad" autocomplete="off"/> Weiße Schokoplättchen
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="chocolate-boons" id="chocolate-boons" autocomplete="off"/> Chocolate Boons
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="cacao-chips" id="cacao-chips" autocomplete="off"/> Kakaosplitter
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="choco-cornflakes" id="choco-cornflakes" autocomplete="off"/> Schoko-Cornflakes
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="choco-hearts" id="choco-hearts" autocomplete="off"/> Schokoherzen
+                        </label>
+                        <label class="btn btn-dark font-harman-simple mb-3">
+                            <input type="checkbox" name="chocoholic-crunchy" id="chocoholic-crunchy" autocomplete="off"/> Schokoholic-Crunchy
+                        </label>
                     </section>
 
                     <h4 class="mt-4 mb-3">Süßigkeiten - 0,30€</h4>
                     <hr class="seperator"/>
-                    <section class="mb-3">
-
+                    <section class="btn-group-toggle mb-3" data-toggle="buttons">
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="froot-loops" id="froot-loops" autocomplete="off"/> Froot Loops
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="haribo" id="haribo" autocomplete="off"/> Haribo
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="sour-snakes" id="sour-snakes" autocomplete="off"/> Saure Schlangen
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="m&m" id="m&m" autocomplete="off"/> M&M
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="marshmallows" id="marshmallows" autocomplete="off"/> Marshmallows
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="oreo" id="oreo" autocomplete="off"/> Oreo
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="smarties" id="smarties" autocomplete="off"/> Smarties
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="toffifee" id="toffifee" autocomplete="off"/> Toffifee
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="rafaello" id="rafaello" autocomplete="off"/> Raffaello
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="ferero-küsschen" id="ferero-küsschen" autocomplete="off"/> Ferero Küsschen
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="mon-cherie" id="mon-cherie" autocomplete="off"/> Mon Cherie
+                        </label>
+                        <label class="btn btn-success font-harman-simple mb-3">
+                            <input type="checkbox" name="ferero-rocher" id="ferero-rocher" autocomplete="off"/> Ferero Rocher
+                        </label>
                     </section>
 
                     <h4 class="mt-4 mb-3">Soßen - 0,40€</h4>
                     <hr class="seperator"/>
-                    <section class="mb-3">
-
+                    <section class="btn-group-toggle mb-3" data-toggle="buttons">
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="choco-sauce" id="choco-sauce" autocomplete="off"/> Schokosoße
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="nougat-sauce" id="nougat-sauce" autocomplete="off"/> Nougatsoße
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="caramel" id="caramel"autocomplete="off"/> Karamell
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="lemon-sauce" id="lemon-sauce" autocomplete="off"/> Zitronensoße
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="strawberry-sauce" id="strawberry-sauce" autocomplete="off"/> Erdbeersoße
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="raspberry-sauce" id="raspberry-sauce" autocomplete="off"/> Himbeersoße
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="cherry-sauce" id="cherry-sauce" autocomplete="off"/> Kirschsoße
+                        </label>
+                        <label class="btn btn-info font-harman-simple mb-3">
+                            <input type="checkbox" name="egg-liqueur" id="egg-liqueur" autocomplete="off"/> Eierlikör
+                        </label>
                     </section>
-
-                    <button class="btn btn-outline-ice-blue btn-lg mb-3 font-harman-simple" type="submit" name="create-yogurt" id="create-yogurt" form="create-yogurt-form">
-                        Fertig
-                    </button>
                 </form>
+            </div>
+
+            <div class="col-lg-4 mb-3">
+                <div class="card bg-light sticky-aside">
+                    <div class="card-header font-harman-simple">
+                        Zutatenliste
+                    </div>
+
+                    <ul class="list-group list-goup-flush">
+                        <li class="list-group-item">Banane</li>
+                        <li class="list-group-item">Walnuss</li>
+                        <li class="list-group-item">Haselnuss</li>
+                        <li class="list-group-item">Nougatsoße</li>
+                    </ul>
+
+                    <div class="card-body">
+                        <h5 class="card-title">Gesamtpreis: 2,50€</h5>
+                        <p class="card-text text-muted">inkl. MwSt. von 19%</p>
+
+                        <button class="btn btn-outline-ice-blue btn-lg mb-3 font-harman-simple" type="submit" name="create-yogurt" id="create-yogurt" form="create-yogurt-form">
+                            Fertig
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

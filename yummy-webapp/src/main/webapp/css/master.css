@@ -234,6 +234,12 @@ a:active, a:visited:active {
     height: 200px;
 }
 
+/*------ Aside -----------------------------------------------------------------------*/
+.sticky-aside {
+    position: sticky;
+    top: 6rem;
+}
+
 /*------ Font Utilities --------------------------------------------------------------*/
 .font-harman-simple {
     font-family: 'Harman Simple';
@@ -242,6 +248,11 @@ a:active, a:visited:active {
 /*------ Background Utilities --------------------------------------------------------*/
 .bg-white-transparent {
     background-color: rgba(255, 255, 255, 0.75);
+}
+
+/*------ Text Utilities --------------------------------------------------------------*/
+.seperator {
+    border: 1px solid rgb(93, 96, 99);
 }
 
 /*------ Form Utilities --------------------------------------------------------------*/
@@ -284,9 +295,4 @@ a:active, a:visited:active {
 .btn-outline-ice-blue:not(:disabled):not(.disabled).active:focus,
 .show > .btn-outline-ice-blue.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-}
-
-
-.seperator {
-    border: 1px solid rgb(93, 96, 99);
 }
