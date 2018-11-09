@@ -13,7 +13,7 @@
 	<packaging>war</packaging>
 
 	<name>yummy-webapp</name>
-	<url>http://maven.apache.org</url>
+	<url>https://github.com/DonColon/Yummy-Yogurt/tree/master/yummy-webapp</url>
 
 	<organization>
 		<name>Hochschule Albstadt-Sigmaringen</name>

@@ -255,6 +255,10 @@ a:active, a:visited:active {
     border: 1px solid rgb(93, 96, 99);
 }
 
+.list-style-square {
+    list-style-type: square;
+}
+
 /*------ Form Utilities --------------------------------------------------------------*/
 .textarea-fixed {
     resize: none;

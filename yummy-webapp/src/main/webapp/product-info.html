@@ -10,7 +10,7 @@
     <meta name="description" content="Erstellen Sie sich Ihren eigenen Becher und holen Sie sich die FroYo Experience nach Hause!"/>
     <meta name="keywords" content="Frozen Yogurt, FroYo, Joghurt, Eiskrem, Speiseeis, Softeis, Dessert, Mixen, Toppings"/>
 
-    <title>Yummy Yogurt - Produkt</title>
+    <title>Yummy Yogurt - Banana Awesome</title>
 
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
@@ -75,8 +75,51 @@
     </header>
 
     <!-- Main Content -->
-    <main>
-        <h1>Yummy Yogurt</h1>
+    <main class="container">
+        <h1 class="mt-4 mb-3">Banana Awesome <small>by DonColon</small></h1>
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item">Banana Awesome</li>
+        </ol>
+
+        <div class="card-group">
+            <div class="card bg-light">
+                <img class="img-fluid" src="images/yogurts/yogurt-08.jpg" alt="Banana Awesome"/>
+            </div>
+
+            <div class="card bg-light">
+                <div class="card-body mx-auto">
+                    <h4>Zutatenliste</h4>
+
+                    <ul class="list-style-square mx-auto d-table">
+                        <li>Bananen-Joghurt</li>
+                        <li>Banane</li>
+                        <li>Schokobomben</li>
+                        <li>Schokostreusel</li>
+                    </ul>
+
+                    <div class="my-3">
+                        <span class="badge badge-danger font-harman-simple p-2">Früchte</span>
+                        <span class="badge badge-warning font-harman-simple text-white p-2">Nüsse & Kerne</span>
+                        <span class="badge badge-dark font-harman-simple p-2">Schokolade</span>
+                    </div>
+
+                    <h4 class="mt-4 mb-3">3,50€</h4>
+
+                    <form name="add-to-cart-form" id="add-to-cart-form" action="shopping-cart.html" method="post">
+                        <div class="form-group">
+                            <label for="amount"><strong>Menge:</strong></label>
+                            <input class="form-control" type="number" name="amount" id="amount" value="1" min="1" max="2000" step="1" required/>
+                        </div>
+
+                        <button class="btn btn-outline-ice-blue btn-lg font-harman-simple w-100 mb-3" type="submit" name="add-to-cart" id="add-to-cart" form="add-to-cart-form">
+                            In den Warenkorb <span class="fas fa-cart-plus"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Main Footer -->
