@@ -13,63 +13,66 @@ import de.fh.albsig.dardan.model.OrderItem;
 import de.fh.albsig.dardan.model.OrderItemID;
 
 
-public final class OrderItemManager 
+public final class OrderItemManager
 {
 
 	private final EntityManager manager;
-	
-	
-	public OrderItemManager(final String persistenceUnitName) 
+
+
+	public OrderItemManager(final String persistenceUnitName)
 	{
 		final EntityManagerFactory factory = Persistence.createEntityManagerFactory(persistenceUnitName);
 		this.manager = factory.createEntityManager();
-		
+
 		factory.close();
 	}
-	
-	
-	public List<OrderItem> listAll() 
+
+
+	public List<OrderItem> listAll()
 	{
-		final TypedQuery<OrderItem> query = manager.createNamedQuery("OrderItem.listAll", OrderItem.class);
+		final TypedQuery<OrderItem> query = this.manager.createNamedQuery("OrderItem.listAll", OrderItem.class);
 		return query.getResultList();
 	}
-	
-	public OrderItem findByID(final OrderItemID orderItemID) 
-			throws NoSuchRowException 
+
+	public OrderItem findByID(final OrderItemID orderItemID)
+			throws NoSuchRowException
 	{
-		final OrderItem orderItem = manager.find(OrderItem.class, orderItemID);
+		final OrderItem orderItem = this.manager.find(OrderItem.class, orderItemID);
 		if(orderItem == null)
 			throw new NoSuchRowException();
 		return orderItem;
 	}
-	
-	public void save(final OrderItem orderItem) 
+
+	public void save(final OrderItem orderItem)
 	{
-		final EntityTransaction transaction = manager.getTransaction();
+		final EntityTransaction transaction = this.manager.getTransaction();
 		transaction.begin();
-			final OrderItem temp = manager.find(OrderItem.class, orderItem.getID());
-			if(temp == null)
-				manager.persist(orderItem);
-			else
-				manager.merge(orderItem);
+
+		final OrderItem temp = this.manager.find(OrderItem.class, orderItem.getID());
+		if(temp == null)
+			this.manager.persist(orderItem);
+		else
+			this.manager.merge(orderItem);
+
 		transaction.commit();
 	}
-	
-	public void delete(final OrderItem orderItem) 
-			throws NoSuchRowException 
+
+	public void delete(final OrderItem orderItem)
 	{
-		final EntityTransaction transaction = manager.getTransaction();
+		final EntityTransaction transaction = this.manager.getTransaction();
 		transaction.begin();
-			final OrderItem temp = this.findByID(orderItem.getID());
-			if(temp != null)
-				manager.remove(orderItem);
+
+		final OrderItem temp = this.manager.find(OrderItem.class, orderItem.getID());
+		if(temp != null)
+			this.manager.remove(orderItem);
+
 		transaction.commit();
 	}
-	
-	public void close() 
+
+	public void close()
 	{
-		if(manager != null)
-			manager.close();
+		if(this.manager != null)
+			this.manager.close();
 	}
-	
+
 }
