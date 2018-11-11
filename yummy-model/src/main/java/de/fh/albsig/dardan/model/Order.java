@@ -26,78 +26,90 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Bestellung")
 @NamedQuery(name="Order.listAll", query="select o from Order o")
-public final class Order implements Serializable 
+public final class Order implements Serializable
 {
-	
+
 	private static final long serialVersionUID = 1019596392287525485L;
 
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OrderGenerator")
 	@SequenceGenerator(name="OrderGenerator",
-			sequenceName="OrderSequence", allocationSize=1)
+	sequenceName="OrderSequence", allocationSize=1)
 	@Column(name="ID")
 	private int orderID;
-	
+
 	@ManyToOne
 	@JoinColumn(name="BenutzerID", nullable=false)
 	private User purchaser;
-	
+
 	@Column(name="Gesamtpreis", nullable=false)
 	private int totalPrice;
-	
+
 	@Column(name="Bestelldatum", nullable=false)
 	private LocalDateTime orderdate;
 
-	
+
 	public Order() {}
 
-	public Order(final User purchaser, final int totalPrice) 
+	public Order(final User purchaser, final int totalPrice)
 	{
 		Objects.requireNonNull(purchaser, "purchaser is null");
-		
+
 		this.purchaser = purchaser;
 		this.totalPrice = totalPrice;
 		this.orderdate = LocalDateTime.now();
 	}
 
-	
+
 	@Override
-	public String toString() 
+	public String toString()
 	{
-		return "Order [orderID=" + orderID + ", user=" + purchaser 
-				+ ", totalPrice=" + totalPrice + ", orderdate=" + orderdate + "]";
+		return "Order [orderID=" + this.orderID + ", user=" + this.purchaser
+				+ ", totalPrice=" + this.totalPrice + ", orderdate=" + this.orderdate + "]";
 	}
-	
+
 	@Override
-	public boolean equals(final Object object) 
+	public boolean equals(final Object object)
 	{
 		if(object == null) return false;
 		if(this == object) return true;
-		
+
 		if(this.getClass() != object.getClass())
 			return false;
-		
-		Order other = (Order) object;
+
+		final Order other = (Order) object;
 		return Objects.equals(this.orderID, other.getID())
-			&& Objects.equals(this.purchaser, other.getPurchaser())
-			&& Objects.equals(this.totalPrice, other.getTotalPrice())
-			&& Objects.equals(this.orderdate, other.getOrderdate());
+				&& Objects.equals(this.purchaser, other.getPurchaser())
+				&& Objects.equals(this.totalPrice, other.getTotalPrice())
+				&& Objects.equals(this.orderdate, other.getOrderdate());
 	}
 
 	@Override
-	public int hashCode() 
+	public int hashCode()
 	{
 		return Objects.hash(this.orderID, this.purchaser, this.totalPrice, this.orderdate);
 	}
-	
 
-	public int getID() {return orderID;}
 
-	public User getPurchaser() {return purchaser;}
+	public int getID()
+	{
+		return this.orderID;
+	}
 
-	public int getTotalPrice() {return totalPrice;}
-	
-	public LocalDateTime getOrderdate() {return orderdate;}
+	public User getPurchaser()
+	{
+		return this.purchaser;
+	}
+
+	public int getTotalPrice()
+	{
+		return this.totalPrice;
+	}
+
+	public LocalDateTime getOrderdate()
+	{
+		return this.orderdate;
+	}
 
 }

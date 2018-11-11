@@ -16,7 +16,7 @@ import javax.persistence.Table;
     BestellungID  int,
     YogurtID      int,
     primary key(BestellungID,YogurtID),
-    
+
     Menge         int not null,
     constraint checkMenge check(Menge > 0)
 );*/
@@ -24,77 +24,89 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Bestellposition")
 @NamedQuery(name="OrderItem.listAll", query="select i from OrderItem i")
-public final class OrderItem implements Serializable 
+public final class OrderItem implements Serializable
 {
-	
+
 	private static final long serialVersionUID = -632106431641713377L;
 
-	
+
 	@EmbeddedId
 	private OrderItemID orderItemID;
-	
+
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="BestellungID", insertable=false, updatable=false)
 	private Order order;
-	
+
 	@ManyToOne
 	@JoinColumn(name="YogurtID", insertable=false, updatable=false)
 	private Yogurt yogurt;
-	
+
 	@Column(name="Menge", nullable=false)
 	private int amount;
-	
-	
+
+
 	public OrderItem() {}
 
-	public OrderItem(final Order order, final Yogurt yogurt, final int amount) 
+	public OrderItem(final Order order, final Yogurt yogurt, final int amount)
 	{
 		Objects.requireNonNull(order, "order is null");
 		Objects.requireNonNull(yogurt, "yogurt is null");
-		
+
 		this.orderItemID = new OrderItemID(order.getID(), yogurt.getID());
 		this.order = order;
 		this.yogurt = yogurt;
 		this.amount = amount;
 	}
-	
-	
+
+
 	@Override
-	public String toString() 
+	public String toString()
 	{
-		return "OrderItem [orderItemID=" + orderItemID + ", order=" + order + ", yogurt=" + yogurt + ", amount="
-				+ amount + "]";
+		return "OrderItem [orderItemID=" + this.orderItemID + ", order=" + this.order
+				+ ", yogurt=" + this.yogurt + ", amount=" + this.amount + "]";
 	}
 
 	@Override
-	public boolean equals(final Object object) 
+	public boolean equals(final Object object)
 	{
 		if(object == null) return false;
 		if(this == object) return true;
-		
+
 		if(this.getClass() != object.getClass())
 			return false;
-		
-		OrderItem other = (OrderItem) object;
+
+		final OrderItem other = (OrderItem) object;
 		return Objects.equals(this.orderItemID, other.getID())
-			&& Objects.equals(this.order, other.getOrder())
-			&& Objects.equals(this.yogurt, other.getYogurt())
-			&& Objects.equals(this.amount, other.getAmount());
+				&& Objects.equals(this.order, other.getOrder())
+				&& Objects.equals(this.yogurt, other.getYogurt())
+				&& Objects.equals(this.amount, other.getAmount());
 	}
 
 	@Override
-	public int hashCode() 
+	public int hashCode()
 	{
 		return Objects.hash(this.orderItemID, this.order, this.yogurt, this.amount);
 	}
 
-	
-	public OrderItemID getID() {return orderItemID;}
 
-	public Order getOrder() {return order;}
+	public OrderItemID getID()
+	{
+		return this.orderItemID;
+	}
 
-	public Yogurt getYogurt() {return yogurt;}
+	public Order getOrder()
+	{
+		return this.order;
+	}
 
-	public int getAmount() {return amount;}
+	public Yogurt getYogurt()
+	{
+		return this.yogurt;
+	}
+
+	public int getAmount()
+	{
+		return this.amount;
+	}
 
 }

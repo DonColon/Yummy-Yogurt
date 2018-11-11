@@ -22,74 +22,83 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Zutatenkategorie")
 @NamedQuery(name="Category.listAll", query="select c from Category c")
-public final class Category implements Serializable 
+public final class Category implements Serializable
 {
-	
+
 	private static final long serialVersionUID = 7610617292935816641L;
 
-	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CategoryGenerator")
-	@SequenceGenerator(name="CategoryGenerator", 
-		sequenceName="CategorySequence", allocationSize=1)
+	@SequenceGenerator(name="CategoryGenerator",
+	sequenceName="CategorySequence", allocationSize=1)
 	@Column(name="ID")
 	private int categoryID;
-	
+
 	@Column(name="Name", unique=true, nullable=false)
 	private String name;
-	
+
 	@Column(name="preis", nullable=false)
 	private int priceInCents;
-	
-	
+
+
 	public Category() {}
 
-	public Category(final String name, final int priceInCents) 
+	public Category(final String name, final int priceInCents)
 	{
 		this.name = name;
 		this.priceInCents = priceInCents;
 	}
 
-	
+
 	@Override
-	public String toString() 
+	public String toString()
 	{
-		return "Category [categoryID=" + categoryID + ", name=" + name + ", priceInCents=" + priceInCents + "]";
+		return "Category [categoryID=" + this.categoryID + ", name=" + this.name + ", priceInCents=" + this.priceInCents + "]";
 	}
 
 	@Override
-	public boolean equals(final Object object) 
+	public boolean equals(final Object object)
 	{
 		if(object == null) return false;
 		if(this == object) return true;
-		
+
 		if(this.getClass() != object.getClass())
 			return false;
-		
-		Category other = (Category) object;
+
+		final Category other = (Category) object;
 		return Objects.equals(this.categoryID, other.getID())
-			&& Objects.equals(this.name, other.getName());
+				&& Objects.equals(this.name, other.getName());
 	}
 
 	@Override
-	public int hashCode() 
+	public int hashCode()
 	{
 		return Objects.hash(this.categoryID, this.name);
 	}
-	
-	
-	public void setPriceInCents(final int priceInCents) 
+
+
+	public void setPriceInCents(final int priceInCents)
 	{
 		if(priceInCents < 0 || priceInCents > Integer.MAX_VALUE)
 			throw new IllegalArgumentException();
-			
+
 		this.priceInCents = priceInCents;
 	}
-	
-	public int getID() {return categoryID;}
 
-	public String getName() {return name;}
+	public int getID()
+	{
+		return this.categoryID;
+	}
 
-	public int getPriceInCents() {return priceInCents;}
-	
+	public String getName()
+	{
+		return this.name;
+	}
+
+	public int getPriceInCents()
+	{
+		return this.priceInCents;
+	}
+
 }

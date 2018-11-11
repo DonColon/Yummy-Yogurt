@@ -59,7 +59,7 @@ public final class UserManager
 	public List<Yogurt> fetchYogurtsOfUser(final int userID)
 			throws NoSuchRowException
 	{
-		final TypedQuery<Yogurt> query = this.manager.createQuery("select yogurt from Yogurt yogurt where yogurt.owner.userID = :userID", Yogurt.class);
+		final TypedQuery<Yogurt> query = this.manager.createNamedQuery("Yogurt.findByOwner", Yogurt.class);
 		query.setParameter("userID", userID);
 
 		return query.getResultList();
