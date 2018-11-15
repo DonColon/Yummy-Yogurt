@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import de.fh.albsig.dardan.exception.NoSuchRowException;
 import de.fh.albsig.dardan.model.User;
-import de.fh.albsig.dardan.persist.UserManager;
+import de.fh.albsig.dardan.persistence.UserManager;
 
 
 @Path("/users")
