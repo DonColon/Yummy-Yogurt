@@ -1,6 +1,7 @@
 package de.fh.albsig.dardan.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -15,11 +16,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Bewertung(
-	    BenutzerID   int,
-	    YogurtID     int,
-	    primary key(BenutzerID,YogurtID),
-
-	    Wertung int not null,
+	    ID          int primary key,
+	    Bewerter    int not null,
+	    Yogurt      int not null,
+	    Wertung     int not null,
+	    Nachricht        varchar2(255) not null,
+	    Bewertungsdatum  timestamp     not null,
 	    constraint checkWertung check(Wertung >= 1 and Wertung <= 5)
 );*/
 
@@ -35,25 +37,32 @@ public class Rating implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="RatingGenerator")
 	@SequenceGenerator(name="RatingGenerator",
-	sequenceName="RatingSequence", allocationSize=1)
+		sequenceName="RatingSequence", allocationSize=1)
 	@Column(name="ID")
 	private int ratingID;
 
 	@ManyToOne
-	@JoinColumn(name="BenutzerID", insertable=false, updatable=false)
+	@JoinColumn(name="Bewerter", insertable=false, updatable=false)
 	private User evaluator;
 
 	@ManyToOne
-	@JoinColumn(name="YogurtID", insertable=false, updatable=false)
+	@JoinColumn(name="Yogurt", insertable=false, updatable=false)
 	private Yogurt yogurt;
 
 	@Column(name="Wertung", nullable=false)
 	private int rating;
 
+	@Column(name="Nachricht", nullable=false)
+	private String message;
+
+	@Column(name="Bewertungsdatum", nullable=false)
+	private LocalDateTime evaluationDate;
+
 
 	public Rating() {}
 
-	public Rating(final User evaluator, final Yogurt yogurt, final int rating)
+	public Rating(final User evaluator, final Yogurt yogurt,
+				  final int rating, final String message)
 	{
 		Objects.requireNonNull(evaluator, "evaluator is null");
 		Objects.requireNonNull(yogurt, "yogurt is null");
@@ -61,14 +70,18 @@ public class Rating implements Serializable
 		this.evaluator = evaluator;
 		this.yogurt = yogurt;
 		this.rating = rating;
+		this.message = message;
+		this.evaluationDate = LocalDateTime.now();
 	}
 
 
 	@Override
 	public String toString()
 	{
-		return "Rating [ratingID=" + this.ratingID + "\n\tevaluator=" + this.evaluator
-				+ "\n\tyogurt=" + this.yogurt + "\n\trating=" + this.rating + "]";
+		return "Rating [ratingID=" + this.ratingID
+				+ ", evaluator=" + this.evaluator + ", yogurt=" + this.yogurt
+				+ ", rating=" + this.rating + ", message=" + this.message
+				+ ", evaluationDate=" + this.evaluationDate + "]";
 	}
 
 	@Override
@@ -82,25 +95,20 @@ public class Rating implements Serializable
 
 		final Rating other = (Rating) object;
 		return Objects.equals(this.ratingID, other.getID())
-				&& Objects.equals(this.evaluator, other.getEvaluator())
-				&& Objects.equals(this.yogurt, other.getYogurt())
-				&& Objects.equals(this.rating, other.getRating());
+			&& Objects.equals(this.evaluator, other.getEvaluator())
+			&& Objects.equals(this.yogurt, other.getYogurt())
+			&& Objects.equals(this.rating, other.getRating())
+			&& Objects.equals(this.message, other.getMessage())
+			&& Objects.equals(this.evaluationDate, other.getEvaluationDate());
 	}
 
 	@Override
 	public int hashCode()
 	{
-		return Objects.hash(this.ratingID, this.evaluator, this.yogurt, this.rating);
+		return Objects.hash(this.ratingID, this.evaluator, this.yogurt,
+							this.rating, this.message, this.evaluationDate);
 	}
 
-
-	public void updateRating(final int rating)
-	{
-		if(rating < 0 || rating > 5)
-			throw new IllegalArgumentException();
-
-		this.rating = rating;
-	}
 
 	public int getID()
 	{
@@ -120,6 +128,16 @@ public class Rating implements Serializable
 	public int getRating()
 	{
 		return this.rating;
+	}
+
+	public String getMessage()
+	{
+		return this.message;
+	}
+
+	public LocalDateTime getEvaluationDate()
+	{
+		return this.evaluationDate;
 	}
 
 }

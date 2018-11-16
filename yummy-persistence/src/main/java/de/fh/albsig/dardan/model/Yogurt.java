@@ -21,10 +21,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 /*create table Yogurt(
-	    ID              int             primary key,
-	    Name            varchar(64)     unique not null,
-	    Veroeffentlicht varchar(8)      not null,
-	    BenutzerID      int             not null,
+	    ID              int              primary key,
+	    Name            varchar2(64)     not null,
+	    Preis           int              not null,
+	    Veroeffentlicht varchar2(8)      not null,
+	    Besitzer        int              not null,
+	    constraint checkYogurtPreis check(Preis > 0),
 	    constraint checkVeroeffentlicht check(Veroeffentlicht in ('true', 'false'))
 );*/
 
@@ -43,23 +45,26 @@ public class Yogurt implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="YogurtGenerator")
 	@SequenceGenerator(name="YogurtGenerator",
-	sequenceName="YogurtSequence", allocationSize=1)
+		sequenceName="YogurtSequence", allocationSize=1)
 	@Column(name="ID")
 	private int yogurtID;
 
 	@Column(name="Name", unique=true, nullable=false)
 	private String name;
 
+	@Column(name="Preis", nullable=false)
+	private int priceInCents;
+
 	@Column(name="Veroeffentlicht", nullable=false)
 	private String visible;
 
 	@ManyToOne
-	@JoinColumn(name="BenutzerID", nullable=false)
+	@JoinColumn(name="Besitzer", nullable=false)
 	private User owner;
 
 	@ManyToMany
-	@JoinTable(name="Zutatenliste", joinColumns={@JoinColumn(name="YogurtID")},
-	inverseJoinColumns={@JoinColumn(name="ZutatenID")})
+	@JoinTable(name="Zutatenliste", joinColumns={@JoinColumn(name="Yogurt")},
+		inverseJoinColumns={@JoinColumn(name="Zutat")})
 	private List<Ingredient> recipe;
 
 	@OneToMany(mappedBy="yogurt")
@@ -68,11 +73,13 @@ public class Yogurt implements Serializable
 
 	public Yogurt() {}
 
-	public Yogurt(final String name, final boolean visibility, final User owner)
+	public Yogurt(final String name, final int priceInCents,
+				  final boolean visibility, final User owner)
 	{
 		Objects.requireNonNull(owner, "owner is null");
 
 		this.name = name;
+		this.priceInCents = priceInCents;
 		this.visible = Boolean.toString(visibility);
 		this.owner = owner;
 		this.recipe = new ArrayList<>();
@@ -83,8 +90,10 @@ public class Yogurt implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Yogurt [yogurtID=" + this.yogurtID + ", name=" + this.name + ", visibility=" + this.visible
-				+ "\n\towner=" + this.owner + "\n\trecipe=" + this.recipe + "]";
+		return "Yogurt [yogurtID=" + this.yogurtID + ", name=" + this.name
+				+ ", priceInCents=" + this.priceInCents + ", visible=" + this.visible
+				+ ", owner=" + this.owner + "\n\trecipe=" + this.recipe
+				+ "\n\tratings=" + this.ratings + "]";
 	}
 
 	@Override
@@ -98,8 +107,8 @@ public class Yogurt implements Serializable
 
 		final Yogurt other = (Yogurt) object;
 		return Objects.equals(this.yogurtID, other.getID())
-				&& Objects.equals(this.name, other.getName())
-				&& Objects.equals(this.owner, other.getOwner());
+			&& Objects.equals(this.name, other.getName())
+			&& Objects.equals(this.owner, other.getOwner());
 	}
 
 	@Override
@@ -117,6 +126,19 @@ public class Yogurt implements Serializable
 	public String getName()
 	{
 		return this.name;
+	}
+
+	public int getPriceInCents()
+	{
+		return this.priceInCents;
+	}
+
+	public void setPriceInCents(final int priceInCents)
+	{
+		if(priceInCents < 0 || priceInCents > Integer.MAX_VALUE)
+			throw new IllegalArgumentException();
+
+		this.priceInCents = priceInCents;
 	}
 
 	public boolean isVisible()

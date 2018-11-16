@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 
 import de.fh.albsig.dardan.exception.NoSuchRowException;
 import de.fh.albsig.dardan.model.OrderItem;
-import de.fh.albsig.dardan.model.OrderItemID;
 
 
 public final class OrderItemManager
@@ -34,7 +33,7 @@ public final class OrderItemManager
 		return query.getResultList();
 	}
 
-	public OrderItem findByID(final OrderItemID orderItemID)
+	public OrderItem findByID(final int orderItemID)
 			throws NoSuchRowException
 	{
 		final OrderItem orderItem = this.manager.find(OrderItem.class, orderItemID);

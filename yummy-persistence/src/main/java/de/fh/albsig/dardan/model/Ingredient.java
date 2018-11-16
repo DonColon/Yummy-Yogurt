@@ -17,11 +17,11 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Zutat(
-	    ID    int           primary key,
-	    Name  varchar(64)   unique not null,
-	    Vegan varchar(8)    not null,
-	    Haram varchar(8)    not null,
-	    ZutatenkategorieID  int      not null,
+	    ID    int            primary key,
+	    Name  varchar2(64)   unique not null,
+	    Vegan varchar2(8)    not null,
+	    Haram varchar2(8)    not null,
+	    Kategorie  int       not null,
 	    constraint checkVegan check(Vegan in ('true', 'false')),
 	    constraint checkHaram check(Haram in ('true', 'false'))
 );*/
@@ -55,7 +55,7 @@ public class Ingredient implements Serializable
 	private String haram;
 
 	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="ZutatenkategorieID", nullable=false)
+	@JoinColumn(name="Kategorie", nullable=false)
 	private Category category;
 
 
@@ -76,8 +76,9 @@ public class Ingredient implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Ingredient [ingredientID=" + this.ingredientID + ", name=" + this.name + ", vegan=" + this.vegan + ", haram="
-				+ this.haram + "\n\tcategory=" + this.category + "]";
+		return "Ingredient [ingredientID=" + this.ingredientID + ", name=" + this.name
+				+ ", vegan=" + this.vegan + ", haram=" + this.haram
+				+ "\n\tcategory=" + this.category + "]";
 	}
 
 	@Override
@@ -91,8 +92,8 @@ public class Ingredient implements Serializable
 
 		final Ingredient other = (Ingredient) object;
 		return Objects.equals(this.ingredientID, other.getID())
-				&& Objects.equals(this.name, other.getName())
-				&& Objects.equals(this.category, other.getCategory());
+			&& Objects.equals(this.name, other.getName())
+			&& Objects.equals(this.category, other.getCategory());
 	}
 
 	@Override

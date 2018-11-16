@@ -5,20 +5,22 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Bestellposition(
-    BestellungID  int,
-    YogurtID      int,
-    primary key(BestellungID,YogurtID),
-
-    Menge         int not null,
-    constraint checkMenge check(Menge > 0)
+	    ID            int primary key,
+	    Bestellung    int not null,
+	    Yogurt        int not null,
+	    Menge         int not null,
+	    constraint checkMenge check(Menge > 0 and Menge <= 2000)
 );*/
 
 @Entity
@@ -30,15 +32,19 @@ public class OrderItem implements Serializable
 	private static final long serialVersionUID = -632106431641713377L;
 
 
-	@EmbeddedId
-	private OrderItemID orderItemID;
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OrderItemGenerator")
+	@SequenceGenerator(name="OrderItemGenerator",
+		sequenceName="OrderItemSequence", allocationSize=1)
+	@Column(name="ID")
+	private int orderItemID;
 
 	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="BestellungID", insertable=false, updatable=false)
+	@JoinColumn(name="Bestellung", insertable=false, updatable=false)
 	private Order order;
 
 	@ManyToOne
-	@JoinColumn(name="YogurtID", insertable=false, updatable=false)
+	@JoinColumn(name="Yogurt", insertable=false, updatable=false)
 	private Yogurt yogurt;
 
 	@Column(name="Menge", nullable=false)
@@ -52,7 +58,6 @@ public class OrderItem implements Serializable
 		Objects.requireNonNull(order, "order is null");
 		Objects.requireNonNull(yogurt, "yogurt is null");
 
-		this.orderItemID = new OrderItemID(order.getID(), yogurt.getID());
 		this.order = order;
 		this.yogurt = yogurt;
 		this.amount = amount;
@@ -78,8 +83,7 @@ public class OrderItem implements Serializable
 		final OrderItem other = (OrderItem) object;
 		return Objects.equals(this.orderItemID, other.getID())
 				&& Objects.equals(this.order, other.getOrder())
-				&& Objects.equals(this.yogurt, other.getYogurt())
-				&& Objects.equals(this.amount, other.getAmount());
+				&& Objects.equals(this.yogurt, other.getYogurt());
 	}
 
 	@Override
@@ -89,7 +93,7 @@ public class OrderItem implements Serializable
 	}
 
 
-	public OrderItemID getID()
+	public int getID()
 	{
 		return this.orderItemID;
 	}
@@ -102,6 +106,14 @@ public class OrderItem implements Serializable
 	public Yogurt getYogurt()
 	{
 		return this.yogurt;
+	}
+
+	public void setAmount(final int amount)
+	{
+		if(amount < 0 || amount > 2000)
+			throw new IllegalArgumentException();
+
+		this.amount = amount;
 	}
 
 	public int getAmount()

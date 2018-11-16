@@ -13,42 +13,46 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Adresse(
-	    ID          int         primary key,
-	    Strasse     varchar(64) not null,
-	    Hausnummer  varchar(64) not null,
-	    PLZ         varchar(64) not null,
-	    Ort         varchar(64) not null
+	    ID           int          primary key,
+	    Strasse      varchar2(64) not null,
+	    Hausnummer   varchar2(64) not null,
+	    Postleitzahl varchar2(64) not null,
+	    Wohnort      varchar2(64) not null
 );*/
 
 @Entity
-@Table(name = "Adresse")
-@NamedQuery(name = "Address.listAll", query = "select a from Address a")
+@Table(name="Adresse")
+@NamedQuery(name="Address.listAll", query="select a from Address a")
 public class Address implements Serializable
 {
 
 	private static final long serialVersionUID = 1816467445814784831L;
 
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "AddressGenerator")
-	@SequenceGenerator(name = "AddressGenerator", sequenceName = "AddressSequence", allocationSize = 1)
-	@Column(name = "ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AddressGenerator")
+	@SequenceGenerator(name="AddressGenerator",
+		sequenceName="AddressSequence", allocationSize=1)
+	@Column(name="ID")
 	private int addressID;
 
-	@Column(name = "Strasse", nullable = false)
+	@Column(name="Strasse", nullable=false)
 	private String streetname;
 
-	@Column(name = "Hausnummer", nullable = false)
+	@Column(name="Hausnummer", nullable=false)
 	private String streetnumber;
 
-	@Column(name = "PLZ", nullable = false)
+	@Column(name="Postleitzahl", nullable=false)
 	private String postalCode;
 
-	@Column(name = "Ort", nullable = false)
+	@Column(name="Ort", nullable=false)
 	private String city;
 
-	public Address(){}
 
-	public Address(final String streetname, final String streetnumber, final String postalCode, final String city)
+	public Address() {}
+
+	public Address(final String streetname, final String streetnumber,
+			final String postalCode, final String city)
 	{
 		this.streetname = streetname;
 		this.streetnumber = streetnumber;
@@ -56,10 +60,12 @@ public class Address implements Serializable
 		this.city = city;
 	}
 
+
 	@Override
 	public String toString()
 	{
-		return "Address [addressID=" + this.addressID + ", streetname=" + this.streetname + ", streetnumber=" + this.streetnumber + ", postalCode="
+		return "Address [addressID=" + this.addressID + ", streetname=" + this.streetname
+				+ ", streetnumber=" + this.streetnumber + ", postalCode="
 				+ this.postalCode + ", city=" + this.city + "]";
 	}
 
@@ -75,16 +81,20 @@ public class Address implements Serializable
 			return false;
 
 		final Address other = (Address) object;
-		return Objects.equals(this.addressID, other.getID()) && Objects.equals(this.streetname, other.getStreetname())
-				&& Objects.equals(this.streetnumber, other.getStreetnumber()) && Objects.equals(this.postalCode, other.getPostalCode())
-				&& Objects.equals(this.city, other.getCity());
+		return Objects.equals(this.addressID, other.getID())
+			&& Objects.equals(this.streetname, other.getStreetname())
+			&& Objects.equals(this.streetnumber, other.getStreetnumber())
+			&& Objects.equals(this.postalCode, other.getPostalCode())
+			&& Objects.equals(this.city, other.getCity());
 	}
 
 	@Override
 	public int hashCode()
 	{
-		return Objects.hash(this.addressID, this.streetname, this.streetnumber, this.postalCode, this.city);
+		return Objects.hash(this.addressID, this.streetname, this.streetnumber,
+				this.postalCode, this.city);
 	}
+
 
 	public int getID()
 	{

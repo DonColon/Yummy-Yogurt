@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /*create table Bestellung(
 	    ID           int  primary key,
-	    BenutzerID   int  not null,
+	    Besteller    int  not null,
 	    Gesamtpreis  int  not null,
 	    Bestelldatum timestamp not null,
 	    constraint checkGesamtpreis check(Gesamtpreis > 0)
@@ -35,12 +35,12 @@ public class Order implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="OrderGenerator")
 	@SequenceGenerator(name="OrderGenerator",
-	sequenceName="OrderSequence", allocationSize=1)
+		sequenceName="OrderSequence", allocationSize=1)
 	@Column(name="ID")
 	private int orderID;
 
 	@ManyToOne
-	@JoinColumn(name="BenutzerID", nullable=false)
+	@JoinColumn(name="Besteller", nullable=false)
 	private User purchaser;
 
 	@Column(name="Gesamtpreis", nullable=false)
@@ -80,9 +80,9 @@ public class Order implements Serializable
 
 		final Order other = (Order) object;
 		return Objects.equals(this.orderID, other.getID())
-				&& Objects.equals(this.purchaser, other.getPurchaser())
-				&& Objects.equals(this.totalPrice, other.getTotalPrice())
-				&& Objects.equals(this.orderdate, other.getOrderdate());
+			&& Objects.equals(this.purchaser, other.getPurchaser())
+			&& Objects.equals(this.totalPrice, other.getTotalPrice())
+			&& Objects.equals(this.orderdate, other.getOrderdate());
 	}
 
 	@Override

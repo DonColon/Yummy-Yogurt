@@ -18,15 +18,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Benutzer(
-	    ID              int           primary key,
-	    Vorname         varchar(64)   not null,
-	    Nachname        varchar(64)   not null,
-	    Benutzername    varchar(64)   unique not null,
-	    Email           varchar(64)   unique not null,
-	    Passwort        varchar(1024) not null,
-	    Geburtsdatum    date          not null,
-	    Beitrittsdatum  date          not null,
-	    AdressID        int           not null,
+	    ID              int            primary key,
+	    Vorname         varchar2(64)   not null,
+	    Nachname        varchar2(64)   not null,
+	    Benutzername    varchar2(64)   unique not null,
+	    Email           varchar2(64)   unique not null,
+	    Passwort        varchar2(1024) not null,
+	    Geburtsdatum    date           not null,
+	    Beitrittsdatum  date           not null,
+	    Adresse         int            not null,
 	    constraint checkDatum check(Geburtsdatum < Beitrittsdatum)
 );*/
 
@@ -45,7 +45,7 @@ public class User implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="UserGenerator")
 	@SequenceGenerator(name="UserGenerator",
-	sequenceName="UserSequence", allocationSize=1)
+		sequenceName="UserSequence", allocationSize=1)
 	@Column(name="ID")
 	private int userID;
 
@@ -71,14 +71,14 @@ public class User implements Serializable
 	private LocalDate accessiondate;
 
 	@ManyToOne(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="AdressID", nullable=false)
+	@JoinColumn(name="Adresse", nullable=false)
 	private Address address;
 
 
 	public User() {}
 
 	public User(final String firstname, final String familyname, final String username, final String email,
-			final String password, final String birthday, final Address address)
+				final String password, final String birthday, final Address address)
 	{
 		Objects.requireNonNull(address, "address is null");
 
@@ -96,9 +96,10 @@ public class User implements Serializable
 	@Override
 	public String toString()
 	{
-		return "User [userID=" + this.userID + ", firstname=" + this.firstname + ", familyname=" + this.familyname + ", username="
-				+ this.username + ", email=" + this.email + ", password=" + this.password + ", birthday=" + this.birthday
-				+ ", accessiondate=" + this.accessiondate + ", address=" + this.address + "]";
+		return "User [userID=" + this.userID + ", firstname=" + this.firstname + ", familyname=" + this.familyname
+				+ ", username=" + this.username + ", email=" + this.email + ", password=" + this.password
+				+ ", birthday=" + this.birthday + ", accessiondate=" + this.accessiondate
+				+ ", address=" + this.address + "]";
 	}
 
 	@Override
@@ -112,7 +113,7 @@ public class User implements Serializable
 
 		final User other = (User) object;
 		return Objects.equals(this.userID, other.getID())
-				&& Objects.equals(this.accessiondate, other.getAccessiondate());
+			&& Objects.equals(this.accessiondate, other.getAccessiondate());
 	}
 
 	@Override

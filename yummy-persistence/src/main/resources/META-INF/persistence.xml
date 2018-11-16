@@ -15,7 +15,6 @@
 		<class>de.fh.albsig.dardan.model.Rating</class>
 		<class>de.fh.albsig.dardan.model.Order</class>
 		<class>de.fh.albsig.dardan.model.OrderItem</class>
-		<class>de.fh.albsig.dardan.model.OrderItemID</class>
 
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:oracle:thin:@orahost:1521:infdb" />

@@ -13,10 +13,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /*create table Zutatenkategorie(
-	    ID    int         primary key,
-	    Name  varchar(64) unique not null,
-	    Preis int         not null,
-	    constraint checkPreis check(Preis > 0)
+	    ID    int          primary key,
+	    Name  varchar2(64) unique not null,
+	    Preis int          not null,
+	    constraint checkKategoriePreis check(Preis > 0)
 );*/
 
 @Entity
@@ -31,14 +31,14 @@ public class Category implements Serializable
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="CategoryGenerator")
 	@SequenceGenerator(name="CategoryGenerator",
-	sequenceName="CategorySequence", allocationSize=1)
+		sequenceName="CategorySequence", allocationSize=1)
 	@Column(name="ID")
 	private int categoryID;
 
 	@Column(name="Name", unique=true, nullable=false)
 	private String name;
 
-	@Column(name="preis", nullable=false)
+	@Column(name="Preis", nullable=false)
 	private int priceInCents;
 
 
@@ -54,7 +54,8 @@ public class Category implements Serializable
 	@Override
 	public String toString()
 	{
-		return "Category [categoryID=" + this.categoryID + ", name=" + this.name + ", priceInCents=" + this.priceInCents + "]";
+		return "Category [categoryID=" + this.categoryID + ", name=" + this.name
+				+ ", priceInCents=" + this.priceInCents + "]";
 	}
 
 	@Override
@@ -68,7 +69,7 @@ public class Category implements Serializable
 
 		final Category other = (Category) object;
 		return Objects.equals(this.categoryID, other.getID())
-				&& Objects.equals(this.name, other.getName());
+			&& Objects.equals(this.name, other.getName());
 	}
 
 	@Override
