@@ -19,6 +19,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 	protected final Class<E> entityClass;
 
 
+	@SuppressWarnings("unchecked")
 	public GenericManager(final EntityManagerFactory factory)
 	{
 		this.manager = factory.createEntityManager();
@@ -30,8 +31,9 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 
 
 	@Override
-	public List<E> listAll() {
-		final String queryName = this.entityClass.getName() + ".listAll";
+	public List<E> listAll()
+	{
+		final String queryName = String.format("%s.listAll", this.entityClass.getSimpleName());
 		final TypedQuery<E> query = this.manager.createNamedQuery(queryName, this.entityClass);
 		return query.getResultList();
 	}
