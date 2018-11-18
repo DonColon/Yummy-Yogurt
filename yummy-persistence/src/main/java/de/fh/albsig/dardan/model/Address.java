@@ -28,7 +28,8 @@ public class Address implements Serializable
 
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="AddressGenerator")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,
+		generator="AddressGenerator")
 	@SequenceGenerator(name="AddressGenerator",
 		sequenceName="AddressSequence", allocationSize=1)
 	@Column(name="ID")
