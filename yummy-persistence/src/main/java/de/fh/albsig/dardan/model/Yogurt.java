@@ -34,7 +34,7 @@ import de.fh.albsig.dardan.exception.InvalidArgumentException;
 
 @Entity
 @Table(name="Yogurt")
-public class Yogurt implements Serializable
+public class Yogurt implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = 5744860498318650165L;
@@ -141,7 +141,8 @@ public class Yogurt implements Serializable
 		this.ratings.add(rating);
 	}
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.yogurtID;
 	}

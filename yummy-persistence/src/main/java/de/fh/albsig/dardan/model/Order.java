@@ -37,7 +37,7 @@ import de.fh.albsig.dardan.exception.InvalidArgumentException;
 
 @Entity
 @Table(name="Bestellung")
-public class Order implements Serializable
+public class Order implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = 7115000964015464892L;
@@ -121,7 +121,8 @@ public class Order implements Serializable
 		this.items.add(item);
 	}
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.orderID;
 	}

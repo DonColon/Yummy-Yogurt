@@ -22,7 +22,7 @@ import de.fh.albsig.dardan.exception.InvalidArgumentException;
 
 @Entity
 @Table(name="Zutatenkategorie")
-public class Category implements Serializable
+public class Category implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = 4911393816666739825L;
@@ -89,7 +89,8 @@ public class Category implements Serializable
 		this.priceInCents = priceInCents;
 	}
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.categoryID;
 	}

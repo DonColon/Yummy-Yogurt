@@ -15,4 +15,40 @@
 			<query>select u from User u</query>
 		</named-query>
 	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.Category" name="Category">
+		<named-query name="Category.listAll">
+			<query>select c from Category c</query>
+		</named-query>
+	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.Ingredient" name="Ingredient">
+		<named-query name="Ingredient.listAll">
+			<query>select i from Ingredient i</query>
+		</named-query>
+	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.Yogurt" name="Yogurt">
+		<named-query name="Yogurt.listAll">
+			<query>select y from Yogurt y</query>
+		</named-query>
+	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.Rating" name="Rating">
+		<named-query name="Rating.listAll">
+			<query>select r from Rating r</query>
+		</named-query>
+	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.Order" name="Order">
+		<named-query name="Order.listAll">
+			<query>select o from Order o</query>
+		</named-query>
+	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.OrderItem" name="OrderItem">
+		<named-query name="OrderItem.listAll">
+			<query>select item from OrderItem item</query>
+		</named-query>
+	</entity>
 </entity-mappings>

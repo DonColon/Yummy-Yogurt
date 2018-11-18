@@ -8,8 +8,9 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
 		<mapping-file>META-INF/orm.xml</mapping-file>
-
-		<!--class>de.fh.albsig.dardan.model.User</class>
+		
+		<!--class>de.fh.albsig.dardan.model.Address</class>
+		<class>de.fh.albsig.dardan.model.User</class>
 		<class>de.fh.albsig.dardan.model.Category</class>
 		<class>de.fh.albsig.dardan.model.Ingredient</class>
 		<class>de.fh.albsig.dardan.model.Yogurt</class>

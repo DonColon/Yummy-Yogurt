@@ -26,7 +26,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Bewertung")
-public class Rating implements Serializable
+public class Rating implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = -4181145249740327005L;
@@ -109,7 +109,8 @@ public class Rating implements Serializable
 	}
 
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.ratingID;
 	}

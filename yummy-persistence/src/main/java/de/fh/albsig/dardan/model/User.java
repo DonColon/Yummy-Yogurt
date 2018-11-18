@@ -32,7 +32,7 @@ import de.fh.albsig.dardan.exception.InvalidArgumentException;
 
 @Entity
 @Table(name="Benutzer")
-public class User implements Serializable
+public class User implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = 995219797856210395L;
@@ -173,7 +173,8 @@ public class User implements Serializable
 		this.address = address;
 	}
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.userID;
 	}

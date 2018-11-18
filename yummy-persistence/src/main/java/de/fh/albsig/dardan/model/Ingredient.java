@@ -26,7 +26,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Zutat")
-public class Ingredient implements Serializable
+public class Ingredient implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = 3391019504309836397L;
@@ -108,7 +108,8 @@ public class Ingredient implements Serializable
 		this.haram = Boolean.toString(haram);
 	}
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.ingredientID;
 	}

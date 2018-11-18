@@ -21,7 +21,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Adresse")
-public class Address implements Serializable
+public class Address implements Serializable, Identifiable<Integer>
 {
 
 	private static final long serialVersionUID = 8069872626311731090L;
@@ -93,7 +93,8 @@ public class Address implements Serializable
 	}
 
 
-	public int getID()
+	@Override
+	public Integer getID()
 	{
 		return this.addressID;
 	}
