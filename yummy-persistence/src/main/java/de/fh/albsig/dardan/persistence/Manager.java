@@ -9,10 +9,13 @@ public interface Manager<K, E extends Identifiable<K>>
 {
 
 	List<E> listAll();
+
 	E findByID(K primaryKey) throws NoSuchRowException;
 
 	void save(E entity);
+
 	void delete(E entity) throws NoSuchRowException;
+
 	void close();
 
 }
