@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+
+	<entity class="de.fh.albsig.dardan.model.Address" name="Address">
+		<named-query name="Address.listAll">
+			<query>select a from Address a</query>
+		</named-query>
+	</entity>
+	
+	<entity class="de.fh.albsig.dardan.model.User" name="User">
+		<named-query name="User.listAll">
+			<query>select u from User u</query>
+		</named-query>
+	</entity>
+</entity-mappings>

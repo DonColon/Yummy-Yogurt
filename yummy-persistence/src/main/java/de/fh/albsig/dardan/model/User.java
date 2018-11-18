@@ -12,10 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import de.fh.albsig.dardan.exception.InvalidArgumentException;
 
 /*create table Benutzer(
 	    ID              int            primary key,
@@ -32,14 +32,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Benutzer")
-@NamedQueries({
-	@NamedQuery(name="User.listAll", query="select u from User u"),
-	@NamedQuery(name="User.findByUsername", query="select u from User u where u.username = :username")
-})
 public class User implements Serializable
 {
 
-	private static final long serialVersionUID = 4102446862783691913L;
+	private static final long serialVersionUID = 995219797856210395L;
 
 
 	@Id
@@ -92,7 +88,6 @@ public class User implements Serializable
 		this.address = address;
 	}
 
-
 	@Override
 	public String toString()
 	{
@@ -124,58 +119,57 @@ public class User implements Serializable
 
 
 	public void setFirstname(final String firstname)
+		throws InvalidArgumentException
 	{
-		Objects.requireNonNull(firstname, "firstname is null");
-
-		if(firstname.isEmpty())
-			throw new IllegalArgumentException();
+		if(firstname.isEmpty() || firstname == null)
+			throw new InvalidArgumentException();
 
 		this.firstname = firstname;
 	}
 
 	public void setFamilyname(final String familyname)
+		throws InvalidArgumentException
 	{
-		Objects.requireNonNull(familyname, "familyname is null");
-
-		if(familyname.isEmpty())
-			throw new IllegalArgumentException();
+		if(familyname.isEmpty() || familyname == null)
+			throw new InvalidArgumentException();
 
 		this.familyname = familyname;
 	}
 
 	public void setUsername(final String username)
+		throws InvalidArgumentException
 	{
-		Objects.requireNonNull(username, "username is null");
-
-		if(username.isEmpty())
-			throw new IllegalArgumentException();
+		if(username.isEmpty() || username == null)
+			throw new InvalidArgumentException();
 
 		this.username = username;
 	}
 
 	public void setEmail(final String email)
+		throws InvalidArgumentException
 	{
-		Objects.requireNonNull(email, "email is null");
-
-		if(email.isEmpty())
-			throw new IllegalArgumentException();
+		if(email.isEmpty() || email == null)
+			throw new InvalidArgumentException();
 
 		this.email = email;
 	}
 
 	public void setPassword(final String password)
+		throws InvalidArgumentException
 	{
-		Objects.requireNonNull(password, "password is null");
-
-		if(password.isEmpty())
-			throw new IllegalArgumentException();
+		if(password.isEmpty() || password == null)
+			throw new InvalidArgumentException();
 
 		this.password = password;
 	}
 
 	public void setAddress(final Address address)
+		throws InvalidArgumentException
 	{
-		this.address = Objects.requireNonNull(address, "address is null");
+		if(address == null)
+			throw new InvalidArgumentException();
+
+		this.address = address;
 	}
 
 	public int getID()
