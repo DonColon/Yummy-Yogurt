@@ -9,44 +9,128 @@
 			<query>select a from Address a</query>
 		</named-query>
 	</entity>
-	
+
+
 	<entity class="de.fh.albsig.dardan.model.User" name="User">
 		<named-query name="User.listAll">
 			<query>select u from User u</query>
 		</named-query>
+
+		<named-query name="User.findByUsername">
+			<query>
+				select u from User u 
+				where u.username = :username
+			</query>
+		</named-query>
+
+		<named-query name="User.findByEmail">
+			<query>
+				select u from User u 
+				where u.email = :email
+			</query>
+		</named-query>
 	</entity>
-	
-	<entity class="de.fh.albsig.dardan.model.Category" name="Category">
+
+
+	<entity class="de.fh.albsig.dardan.model.Category"
+		name="Category">
 		<named-query name="Category.listAll">
 			<query>select c from Category c</query>
 		</named-query>
 	</entity>
-	
-	<entity class="de.fh.albsig.dardan.model.Ingredient" name="Ingredient">
+
+
+	<entity class="de.fh.albsig.dardan.model.Ingredient"
+		name="Ingredient">
 		<named-query name="Ingredient.listAll">
 			<query>select i from Ingredient i</query>
 		</named-query>
+
+		<named-query name="Ingredient.findByCategory">
+			<query>
+				select i from Ingredient i 
+				where i.category.name = :categoryname
+			</query>
+		</named-query>
 	</entity>
-	
+
+
 	<entity class="de.fh.albsig.dardan.model.Yogurt" name="Yogurt">
 		<named-query name="Yogurt.listAll">
 			<query>select y from Yogurt y</query>
 		</named-query>
+
+		<named-query name="Yogurt.listIfVisible">
+			<query>
+				select y from Yogurt y 
+				where y.visibility = 'true'
+			</query>
+		</named-query>
+		
+		<named-query name="Yogurt.listByPriceAsc">
+			<query>
+				select y from Yogurt y 
+				where y.visibility = 'true' 
+				order by y.priceInCents asc
+			</query>
+		</named-query>
+
+		<named-query name="Yogurt.listByPriceDesc">
+			<query>
+				select y from Yogurt y 
+				where y.visibility = 'true' 
+				order by y.priceInCents desc
+			</query>
+		</named-query>
+
+		<named-query name="Yogurt.listByNameAsc">
+			<query>
+				select y from Yogurt y
+				where y.visibility = 'true'
+				order by y.name asc
+			</query>
+		</named-query>
+
+		<named-query name="Yogurt.listByNameDesc">
+			<query>
+				select y from Yogurt y
+				where y.visibility = 'true'
+				order by y.name desc
+			</query>
+		</named-query>
+
+		<named-query name="Yogurt.findByName">
+			<query>
+				select y from Yogurt y 
+				where y.name = :yogurtname
+			</query>
+		</named-query>
+
+		<named-query name="Yogurt.findByUser">
+			<query>
+				select y from Yogurt y 
+				where y.owner.username = :username
+			</query>
+		</named-query>
 	</entity>
-	
+
+
 	<entity class="de.fh.albsig.dardan.model.Rating" name="Rating">
 		<named-query name="Rating.listAll">
 			<query>select r from Rating r</query>
 		</named-query>
 	</entity>
-	
+
+
 	<entity class="de.fh.albsig.dardan.model.Order" name="Order">
 		<named-query name="Order.listAll">
 			<query>select o from Order o</query>
 		</named-query>
 	</entity>
-	
-	<entity class="de.fh.albsig.dardan.model.OrderItem" name="OrderItem">
+
+
+	<entity class="de.fh.albsig.dardan.model.OrderItem"
+		name="OrderItem">
 		<named-query name="OrderItem.listAll">
 			<query>select item from OrderItem item</query>
 		</named-query>
