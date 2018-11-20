@@ -7,6 +7,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.fh.albsig.dardan.exception.NoSuchRowException;
+import de.fh.albsig.dardan.listener.StartupListener;
 import de.fh.albsig.dardan.model.User;
 import de.fh.albsig.dardan.persistence.UserManager;
 
@@ -20,7 +21,7 @@ public class UserService
 	@Path("/{id}")
 	public User fetchUserInfo(@PathParam("id") final int userID)
 	{
-		final UserManager userManager = new UserManager("YummyYogurt");
+		final UserManager userManager = new UserManager(StartupListener.getFactory());
 
 		User user = null;
 
