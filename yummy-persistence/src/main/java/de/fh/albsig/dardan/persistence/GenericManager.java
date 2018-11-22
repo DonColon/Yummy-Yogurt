@@ -8,8 +8,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import de.fh.albsig.dardan.exception.NoSuchRowException;
-import de.fh.albsig.dardan.model.Identifiable;
+import de.fh.albsig.dardan.persistence.exception.NoSuchRowException;
+import de.fh.albsig.dardan.persistence.model.Identifiable;
 
 
 public abstract class GenericManager<K, E extends Identifiable<K>> implements Manager<K, E>

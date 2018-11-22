@@ -1,4 +1,4 @@
-package de.fh.albsig.dardan.exception;
+package de.fh.albsig.dardan.persistence.exception;
 
 public class NoSuchRowException extends Exception
 {

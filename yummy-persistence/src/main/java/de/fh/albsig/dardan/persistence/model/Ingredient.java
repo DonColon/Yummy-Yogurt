@@ -1,4 +1,4 @@
-package de.fh.albsig.dardan.model;
+package de.fh.albsig.dardan.persistence.model;
 
 import java.io.Serializable;
 import java.util.Objects;

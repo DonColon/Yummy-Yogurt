@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-import de.fh.albsig.dardan.model.Yogurt;
+import de.fh.albsig.dardan.persistence.model.Yogurt;
 
 
 public class YogurtManager extends GenericManager<Integer, Yogurt>

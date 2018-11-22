@@ -3,7 +3,7 @@ package de.fh.albsig.dardan.persistence;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-import de.fh.albsig.dardan.model.User;
+import de.fh.albsig.dardan.persistence.model.User;
 
 
 public class UserManager extends GenericManager<Integer, User>

@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
-import de.fh.albsig.dardan.model.Ingredient;
+import de.fh.albsig.dardan.persistence.model.Ingredient;
 
 
 public class IngredientManager extends GenericManager<Integer, Ingredient>

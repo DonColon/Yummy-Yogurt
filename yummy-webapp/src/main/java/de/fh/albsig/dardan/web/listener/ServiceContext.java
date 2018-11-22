@@ -1,4 +1,4 @@
-package de.fh.albsig.dardan.listener;
+package de.fh.albsig.dardan.web.listener;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -8,20 +8,21 @@ import javax.servlet.annotation.WebListener;
 
 
 @WebListener
-public final class StartupListener implements ServletContextListener
+public final class ServiceContext implements ServletContextListener
 {
 
+	private static final String PERSISTENCE_UNIT = "YummyYogurt";
 	private static EntityManagerFactory factory;
 
 
     @Override
-	public void contextDestroyed(final ServletContextEvent event)
+	public void contextInitialized(final ServletContextEvent event)
     {
-    	factory = Persistence.createEntityManagerFactory("YummyYogurt");
+    	factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
     }
 
     @Override
-	public void contextInitialized(final ServletContextEvent event)
+	public void contextDestroyed(final ServletContextEvent event)
     {
     	factory.close();
     }

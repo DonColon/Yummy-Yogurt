@@ -2,7 +2,7 @@ package de.fh.albsig.dardan.persistence;
 
 import javax.persistence.EntityManagerFactory;
 
-import de.fh.albsig.dardan.model.Category;
+import de.fh.albsig.dardan.persistence.model.Category;
 
 
 public class CategoryManager extends GenericManager<Integer, Category>

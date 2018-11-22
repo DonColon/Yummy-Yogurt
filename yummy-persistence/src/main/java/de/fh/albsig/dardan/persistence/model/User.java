@@ -1,4 +1,4 @@
-package de.fh.albsig.dardan.model;
+package de.fh.albsig.dardan.persistence.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import de.fh.albsig.dardan.exception.InvalidArgumentException;
+import de.fh.albsig.dardan.persistence.exception.InvalidArgumentException;
 
 /*create table Benutzer(
 	    ID              int            primary key,

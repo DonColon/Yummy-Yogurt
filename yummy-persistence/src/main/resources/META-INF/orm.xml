@@ -4,14 +4,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
 
-	<entity class="de.fh.albsig.dardan.model.Address" name="Address">
+	<entity class="de.fh.albsig.dardan.persistence.model.Address" name="Address">
 		<named-query name="Address.listAll">
 			<query>select a from Address a</query>
 		</named-query>
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.User" name="User">
+	<entity class="de.fh.albsig.dardan.persistence.model.User" name="User">
 		<named-query name="User.listAll">
 			<query>select u from User u</query>
 		</named-query>
@@ -32,16 +32,14 @@
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.Category"
-		name="Category">
+	<entity class="de.fh.albsig.dardan.persistence.model.Category" name="Category">
 		<named-query name="Category.listAll">
 			<query>select c from Category c</query>
 		</named-query>
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.Ingredient"
-		name="Ingredient">
+	<entity class="de.fh.albsig.dardan.persistence.model.Ingredient" name="Ingredient">
 		<named-query name="Ingredient.listAll">
 			<query>select i from Ingredient i</query>
 		</named-query>
@@ -55,7 +53,7 @@
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.Yogurt" name="Yogurt">
+	<entity class="de.fh.albsig.dardan.persistence.model.Yogurt" name="Yogurt">
 		<named-query name="Yogurt.listAll">
 			<query>select y from Yogurt y</query>
 		</named-query>
@@ -115,22 +113,21 @@
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.Rating" name="Rating">
+	<entity class="de.fh.albsig.dardan.persistence.model.Rating" name="Rating">
 		<named-query name="Rating.listAll">
 			<query>select r from Rating r</query>
 		</named-query>
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.Order" name="Order">
+	<entity class="de.fh.albsig.dardan.persistence.model.Order" name="Order">
 		<named-query name="Order.listAll">
 			<query>select o from Order o</query>
 		</named-query>
 	</entity>
 
 
-	<entity class="de.fh.albsig.dardan.model.OrderItem"
-		name="OrderItem">
+	<entity class="de.fh.albsig.dardan.persistence.model.OrderItem" name="OrderItem">
 		<named-query name="OrderItem.listAll">
 			<query>select item from OrderItem item</query>
 		</named-query>

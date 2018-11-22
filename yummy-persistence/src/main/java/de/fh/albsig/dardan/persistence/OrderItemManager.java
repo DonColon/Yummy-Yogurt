@@ -2,7 +2,7 @@ package de.fh.albsig.dardan.persistence;
 
 import javax.persistence.EntityManagerFactory;
 
-import de.fh.albsig.dardan.model.OrderItem;
+import de.fh.albsig.dardan.persistence.model.OrderItem;
 
 
 public class OrderItemManager extends GenericManager<Integer, OrderItem>

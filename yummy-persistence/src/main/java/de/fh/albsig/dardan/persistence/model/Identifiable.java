@@ -1,4 +1,4 @@
-package de.fh.albsig.dardan.model;
+package de.fh.albsig.dardan.persistence.model;
 
 
 public interface Identifiable<K>

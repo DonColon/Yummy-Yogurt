@@ -2,8 +2,8 @@ package de.fh.albsig.dardan.persistence;
 
 import java.util.List;
 
-import de.fh.albsig.dardan.exception.NoSuchRowException;
-import de.fh.albsig.dardan.model.Identifiable;
+import de.fh.albsig.dardan.persistence.exception.NoSuchRowException;
+import de.fh.albsig.dardan.persistence.model.Identifiable;
 
 public interface Manager<K, E extends Identifiable<K>>
 {
