@@ -12,6 +12,7 @@ public final class ServiceContext implements ServletContextListener
 {
 
 	private static final String PERSISTENCE_UNIT = "YummyYogurt";
+
 	private static EntityManagerFactory factory;
 
 

@@ -21,13 +21,13 @@
 		<servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>jersey.config.server.provider.packages</param-name>
-			<param-value>de.fh.albsig.dardan.web</param-value>
+			<param-value>de.fh.albsig.dardan.web.service</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>Jersey REST Service</servlet-name>
-		<url-pattern>/rest/*</url-pattern>
+		<url-pattern>/services/*</url-pattern>
 	</servlet-mapping>
 </web-app>
