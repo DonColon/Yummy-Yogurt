@@ -159,7 +159,7 @@ public class Yogurt implements Serializable, Identifiable<Integer>
 
 	public boolean isVisibile()
 	{
-		final Boolean visibility = new Boolean(this.visibility);
+		final Boolean visibility = Boolean.valueOf(this.visibility);
 		return visibility.booleanValue();
 	}
 

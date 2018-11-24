@@ -122,7 +122,7 @@ public class User implements Serializable, Identifiable<Integer>
 	public void setFirstname(final String firstname)
 		throws InvalidArgumentException
 	{
-		if(firstname.isEmpty() || firstname == null)
+		if(firstname.isEmpty())
 			throw new InvalidArgumentException();
 
 		this.firstname = firstname;
@@ -131,7 +131,7 @@ public class User implements Serializable, Identifiable<Integer>
 	public void setFamilyname(final String familyname)
 		throws InvalidArgumentException
 	{
-		if(familyname.isEmpty() || familyname == null)
+		if(familyname.isEmpty())
 			throw new InvalidArgumentException();
 
 		this.familyname = familyname;
@@ -140,7 +140,7 @@ public class User implements Serializable, Identifiable<Integer>
 	public void setUsername(final String username)
 		throws InvalidArgumentException
 	{
-		if(username.isEmpty() || username == null)
+		if(username.isEmpty())
 			throw new InvalidArgumentException();
 
 		this.username = username;
@@ -149,7 +149,7 @@ public class User implements Serializable, Identifiable<Integer>
 	public void setEmail(final String email)
 		throws InvalidArgumentException
 	{
-		if(email.isEmpty() || email == null)
+		if(email.isEmpty())
 			throw new InvalidArgumentException();
 
 		this.email = email;
@@ -158,7 +158,7 @@ public class User implements Serializable, Identifiable<Integer>
 	public void setPassword(final String password)
 		throws InvalidArgumentException
 	{
-		if(password.isEmpty() || password == null)
+		if(password.isEmpty())
 			throw new InvalidArgumentException();
 
 		this.password = password;

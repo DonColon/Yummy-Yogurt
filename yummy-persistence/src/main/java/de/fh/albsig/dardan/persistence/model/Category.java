@@ -83,7 +83,7 @@ public class Category implements Serializable, Identifiable<Integer>
 	public void setPriceInCents(final int priceInCents)
 		throws InvalidArgumentException
 	{
-		if(priceInCents < 0 || priceInCents > Integer.MAX_VALUE)
+		if(priceInCents < 0)
 			throw new InvalidArgumentException();
 
 		this.priceInCents = priceInCents;

@@ -7,6 +7,11 @@
 	<display-name>Yummy Yogurt</display-name>
 	<description>Create your very own Frozen Yogurt</description>
 	
+	<context-param>
+		<param-name>log4j-config-location</param-name>
+		<param-value>WEB-INF/log4j.properties</param-value>
+	</context-param>
+	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

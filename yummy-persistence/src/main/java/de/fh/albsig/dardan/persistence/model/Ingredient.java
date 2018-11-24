@@ -121,13 +121,13 @@ public class Ingredient implements Serializable, Identifiable<Integer>
 
 	public boolean isVegan()
 	{
-		final Boolean vegan = new Boolean(this.vegan);
+		final Boolean vegan = Boolean.valueOf(this.vegan);
 		return vegan.booleanValue();
 	}
 
 	public boolean isHaram()
 	{
-		final Boolean haram = new Boolean(this.haram);
+		final Boolean haram = Boolean.valueOf(this.haram);
 		return haram.booleanValue();
 	}
 
