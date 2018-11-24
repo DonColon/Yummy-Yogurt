@@ -28,6 +28,7 @@ public class UserInfo
 	private AddressInfo address;
 
 
+
 	public String getFirstname()
 	{
 		return this.firstname;

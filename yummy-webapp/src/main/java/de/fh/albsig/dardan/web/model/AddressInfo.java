@@ -18,6 +18,7 @@ public class AddressInfo
 	private String city;
 
 
+
 	public String getStreetname()
 	{
 		return this.streetname;

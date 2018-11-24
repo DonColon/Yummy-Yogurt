@@ -31,7 +31,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 
 
 	@Override
-	public List<E> listAll()
+	public final List<E> listAll()
 	{
 		final String queryName = String.format("%s.listAll", this.entityClass.getSimpleName());
 		final TypedQuery<E> query = this.manager.createNamedQuery(queryName, this.entityClass);
@@ -39,7 +39,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 	}
 
 	@Override
-	public E findByID(final K primaryKey)
+	public final E findByID(final K primaryKey)
 		throws NoSuchRowException
 	{
 		final E entity = this.manager.find(this.entityClass, primaryKey);
@@ -49,7 +49,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 	}
 
 	@Override
-	public void save(final E entity)
+	public final void save(final E entity)
 	{
 		final EntityTransaction transaction = this.manager.getTransaction();
 		transaction.begin();
@@ -64,7 +64,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 	}
 
 	@Override
-	public void delete(final E entity)
+	public final void delete(final E entity)
 		throws NoSuchRowException
 	{
 		final EntityTransaction transaction = this.manager.getTransaction();
@@ -80,7 +80,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 	}
 
 	@Override
-	public void close()
+	public final void close()
 	{
 		if(this.manager != null)
 			this.manager.close();
