@@ -1,0 +1,2 @@
+@@ dropTable
+@@ dropSequence

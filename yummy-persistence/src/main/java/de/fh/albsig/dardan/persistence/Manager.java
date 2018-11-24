@@ -14,6 +14,8 @@ public interface Manager<K, E extends Identifiable<K>>
 
 	void save(E entity);
 
+	void update(E entity) throws NoSuchRowException;
+
 	void delete(E entity) throws NoSuchRowException;
 
 	void close();
