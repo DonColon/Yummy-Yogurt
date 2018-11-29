@@ -15,8 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import de.fh.albsig.dardan.persistence.exception.InvalidArgumentException;
-
 /*create table Benutzer(
 	    ID              int            primary key,
 	    Vorname         varchar2(64)   not null,
@@ -120,56 +118,32 @@ public class User implements Serializable, Identifiable<Integer>
 
 
 	public void setFirstname(final String firstname)
-		throws InvalidArgumentException
 	{
-		if(firstname.isEmpty())
-			throw new InvalidArgumentException();
-
 		this.firstname = firstname;
 	}
 
 	public void setFamilyname(final String familyname)
-		throws InvalidArgumentException
 	{
-		if(familyname.isEmpty())
-			throw new InvalidArgumentException();
-
 		this.familyname = familyname;
 	}
 
 	public void setUsername(final String username)
-		throws InvalidArgumentException
 	{
-		if(username.isEmpty())
-			throw new InvalidArgumentException();
-
 		this.username = username;
 	}
 
 	public void setEmail(final String email)
-		throws InvalidArgumentException
 	{
-		if(email.isEmpty())
-			throw new InvalidArgumentException();
-
 		this.email = email;
 	}
 
 	public void setPassword(final String password)
-		throws InvalidArgumentException
 	{
-		if(password.isEmpty())
-			throw new InvalidArgumentException();
-
 		this.password = password;
 	}
 
 	public void setAddress(final Address address)
-		throws InvalidArgumentException
 	{
-		if(address == null)
-			throw new InvalidArgumentException();
-
 		this.address = address;
 	}
 

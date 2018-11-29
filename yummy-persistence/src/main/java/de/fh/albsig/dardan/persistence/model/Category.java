@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import de.fh.albsig.dardan.persistence.exception.InvalidArgumentException;
-
 /*create table Zutatenkategorie(
 	    ID    int          primary key,
 	    Name  varchar2(64) unique not null,
@@ -81,11 +79,7 @@ public class Category implements Serializable, Identifiable<Integer>
 
 
 	public void setPriceInCents(final int priceInCents)
-		throws InvalidArgumentException
 	{
-		if(priceInCents < 0)
-			throw new InvalidArgumentException();
-
 		this.priceInCents = priceInCents;
 	}
 

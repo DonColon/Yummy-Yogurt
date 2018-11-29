@@ -20,8 +20,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import de.fh.albsig.dardan.persistence.exception.InvalidArgumentException;
-
 /*create table Yogurt(
 	    ID              int              primary key,
 	    Name            varchar2(64)     not null,
@@ -124,20 +122,12 @@ public class Yogurt implements Serializable, Identifiable<Integer>
 	}
 
 	public void addToRecipe(final Ingredient ingredient)
-		throws InvalidArgumentException
 	{
-		if(ingredient == null)
-			throw new InvalidArgumentException();
-
 		this.recipe.add(ingredient);
 	}
 
 	public void rate(final Rating rating)
-		throws InvalidArgumentException
 	{
-		if(rating == null)
-			throw new InvalidArgumentException();
-
 		this.ratings.add(rating);
 	}
 

@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-import de.fh.albsig.dardan.persistence.exception.NoSuchRowException;
+import de.fh.albsig.dardan.persistence.exception.DatabaseException;
 import de.fh.albsig.dardan.persistence.model.Identifiable;
 
 
@@ -40,11 +40,11 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 
 	@Override
 	public final E findByID(final K primaryKey)
-		throws NoSuchRowException
+		throws DatabaseException.NoSuchRow
 	{
 		final E entity = this.manager.find(this.entityClass, primaryKey);
 		if(entity == null)
-			throw new NoSuchRowException();
+			throw new DatabaseException.NoSuchRow("There is no such row for the id: " + primaryKey);
 		return entity;
 	}
 
@@ -64,7 +64,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 
 	@Override
 	public void update(final E entity)
-		throws NoSuchRowException
+		throws DatabaseException.NoSuchRow
 	{
 		final EntityTransaction transaction = this.manager.getTransaction();
 		transaction.begin();
@@ -73,14 +73,14 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 		if(temp != null)
 			this.manager.merge(entity);
 		else
-			throw new NoSuchRowException();
+			throw new DatabaseException.NoSuchRow("There is no such row for the id: " + entity.getID());
 
 		transaction.commit();
 	}
 
 	@Override
 	public final void delete(final E entity)
-		throws NoSuchRowException
+		throws DatabaseException.NoSuchRow
 	{
 		final EntityTransaction transaction = this.manager.getTransaction();
 		transaction.begin();
@@ -89,7 +89,7 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 		if(temp != null)
 			this.manager.remove(entity);
 		else
-			throw new NoSuchRowException();
+			throw new DatabaseException.NoSuchRow("There is no such row for the id: " + entity.getID());
 
 		transaction.commit();
 	}

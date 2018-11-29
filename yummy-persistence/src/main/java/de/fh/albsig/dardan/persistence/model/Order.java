@@ -19,8 +19,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import de.fh.albsig.dardan.persistence.exception.InvalidArgumentException;
-
 /*create table Bestellung(
 	    ID           int            primary key,
 	    Besteller    int            not null,
@@ -113,11 +111,7 @@ public class Order implements Serializable, Identifiable<Integer>
 
 
 	public void addItem(final OrderItem item)
-		throws InvalidArgumentException
 	{
-		if(item == null)
-			throw new InvalidArgumentException();
-
 		this.items.add(item);
 	}
 

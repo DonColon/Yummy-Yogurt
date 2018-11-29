@@ -14,8 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import de.fh.albsig.dardan.persistence.exception.InvalidArgumentException;
-
 /*create table Bestellposition(
 	    ID            int primary key,
 	    Bestellung    int not null,
@@ -95,11 +93,7 @@ public class OrderItem implements Serializable, Identifiable<Integer>
 
 
 	public void setAmount(final int amount)
-		throws InvalidArgumentException
 	{
-		if(amount < 0 || amount > 2000)
-			throw new InvalidArgumentException();
-
 		this.amount = amount;
 	}
 
