@@ -19,6 +19,21 @@ public class DatabaseException
 		}
 	}
 
+	public static class TooManyRows extends ApplicationException
+	{
+		private static final long serialVersionUID = 7699462103228701307L;
+
+		public TooManyRows(final String message, final Throwable cause)
+		{
+			super(message, cause);
+		}
+
+		public TooManyRows(final String message)
+		{
+			super(message);
+		}
+	}
+
 	public static class InvalidArgument extends ApplicationException
 	{
 		private static final long serialVersionUID = -8068823692854522796L;

@@ -1,5 +1,6 @@
 package de.fh.albsig.dardan.web.service;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -11,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.fh.albsig.dardan.persistence.UserManager;
+import de.fh.albsig.dardan.persistence.exception.DatabaseException;
 import de.fh.albsig.dardan.persistence.model.Address;
 import de.fh.albsig.dardan.persistence.model.User;
 import de.fh.albsig.dardan.web.listener.ServiceContext;
@@ -27,13 +29,17 @@ public class UserService
 	public User fetchUserInfo(@PathParam("username") final String username)
 	{
 		final UserManager manager = new UserManager(ServiceContext.getFactory());
+		User user = new User();
 
-		final User user = manager.findByUsername(username);
+		try {
+			user = manager.findByUsername(username);
 
-		manager.close();
-
-		if(user == null)
+		} catch (final DatabaseException.NoSuchRow e) {
 			throw new NotFoundException();
+
+		} catch (final DatabaseException.TooManyRows e) {
+			throw new BadRequestException();
+		}
 
 		return user;
 	}

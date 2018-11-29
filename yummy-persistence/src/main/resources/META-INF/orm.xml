@@ -96,18 +96,18 @@
 				order by y.name desc
 			</query>
 		</named-query>
+		
+		<named-query name="Yogurt.listByOwner">
+			<query>
+				select y from Yogurt y 
+				where y.owner.username = :username
+			</query>
+		</named-query>
 
 		<named-query name="Yogurt.findByName">
 			<query>
 				select y from Yogurt y 
 				where y.name = :yogurtname
-			</query>
-		</named-query>
-
-		<named-query name="Yogurt.findByUser">
-			<query>
-				select y from Yogurt y 
-				where y.owner.username = :username
 			</query>
 		</named-query>
 	</entity>

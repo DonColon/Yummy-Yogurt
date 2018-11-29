@@ -55,7 +55,6 @@ public abstract class GenericManager<K, E extends Identifiable<K>> implements Ma
 		transaction.begin();
 
 		final E temp = this.manager.find(this.entityClass, entity.getID());
-
 		if(temp == null)
 			this.manager.persist(entity);
 

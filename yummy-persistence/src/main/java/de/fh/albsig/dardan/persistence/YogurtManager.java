@@ -3,8 +3,11 @@ package de.fh.albsig.dardan.persistence;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 
+import de.fh.albsig.dardan.persistence.exception.DatabaseException;
 import de.fh.albsig.dardan.persistence.model.Yogurt;
 
 
@@ -45,7 +48,6 @@ public class YogurtManager extends GenericManager<Integer, Yogurt>
 	{
 		final TypedQuery<Yogurt> query = this.manager.createNamedQuery(
 				"Yogurt.listByNameAsc", this.entityClass);
-
 		return query.getResultList();
 	}
 
@@ -53,28 +55,36 @@ public class YogurtManager extends GenericManager<Integer, Yogurt>
 	{
 		final TypedQuery<Yogurt> query = this.manager.createNamedQuery(
 				"Yogurt.listByNameDesc", this.entityClass);
-
 		return query.getResultList();
 	}
 
-	public Yogurt findByName(final String yogurtname)
-	{
-		final TypedQuery<Yogurt> query = this.manager.createNamedQuery(
-				"Yogurt.findByName", this.entityClass);
-
-		query.setParameter("yogurtname", yogurtname);
-
-		return query.getSingleResult();
-	}
-
-	public Yogurt findByUser(final String username)
+	public List<Yogurt> listByOwner(final String username)
 	{
 		final TypedQuery<Yogurt> query = this.manager.createNamedQuery(
 				"Yogurt.findByUser", this.entityClass);
-
 		query.setParameter("username", username);
+		return query.getResultList();
+	}
 
-		return query.getSingleResult();
+	public Yogurt findByName(final String name)
+		throws DatabaseException.NoSuchRow, DatabaseException.TooManyRows
+	{
+		final TypedQuery<Yogurt> query = this.manager.createNamedQuery(
+				"Yogurt.findByName", this.entityClass);
+		query.setParameter("yogurtname", name);
+		Yogurt yogurt = new Yogurt();
+
+		try {
+			yogurt = query.getSingleResult();
+
+		} catch(final NoResultException e) {
+			throw new DatabaseException.NoSuchRow("There is no such row for the name: " + name, e);
+
+		} catch(final NonUniqueResultException e) {
+			throw new DatabaseException.TooManyRows("No unique result for the name: " + name, e);
+		}
+
+		return yogurt;
 	}
 
 }
