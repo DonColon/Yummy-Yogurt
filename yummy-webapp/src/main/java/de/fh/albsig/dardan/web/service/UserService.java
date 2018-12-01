@@ -1,18 +1,18 @@
 package de.fh.albsig.dardan.web.service;
 
-import javax.ws.rs.BadRequestException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import de.fh.albsig.dardan.persistence.UserManager;
-import de.fh.albsig.dardan.persistence.exception.DatabaseException;
 import de.fh.albsig.dardan.persistence.model.Address;
 import de.fh.albsig.dardan.persistence.model.User;
 import de.fh.albsig.dardan.web.listener.ServiceContext;
@@ -24,22 +24,19 @@ import de.fh.albsig.dardan.web.model.UserInfo;
 public class UserService
 {
 
+	@Context
+	private HttpServletRequest request;
+
+
 	@GET
-	@Path("/{username}")
-	public User fetchUserInfo(@PathParam("username") final String username)
+	public User fetchUserInfo()
 	{
-		final UserManager manager = new UserManager(ServiceContext.getFactory());
-		User user = new User();
+		final HttpSession session = this.request.getSession(false);
 
-		try {
-			user = manager.findByUsername(username);
-
-		} catch (final DatabaseException.NoSuchRow e) {
+		if(session == null)
 			throw new NotFoundException();
 
-		} catch (final DatabaseException.TooManyRows e) {
-			throw new BadRequestException();
-		}
+		final User user = (User) session.getAttribute("user");
 
 		return user;
 	}
