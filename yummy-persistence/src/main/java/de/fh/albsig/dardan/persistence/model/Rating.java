@@ -44,10 +44,6 @@ public class Rating implements Serializable, Identifiable<Integer>
 	@JoinColumn(name="Bewerter", insertable=false, updatable=false)
 	private User evaluator;
 
-	@ManyToOne
-	@JoinColumn(name="Yogurt", insertable=false, updatable=false)
-	private Yogurt yogurt;
-
 	@Column(name="Wertung", nullable=false)
 	private int rating;
 
@@ -60,14 +56,11 @@ public class Rating implements Serializable, Identifiable<Integer>
 
 	public Rating() {}
 
-	public Rating(final User evaluator, final Yogurt yogurt,
-			      final int rating, final String message)
+	public Rating(final User evaluator, final int rating, final String message)
 	{
 		Objects.requireNonNull(evaluator, "evaluator is null");
-		Objects.requireNonNull(yogurt, "yogurt is null");
 
 		this.evaluator = evaluator;
-		this.yogurt = yogurt;
 		this.rating = rating;
 		this.message = message;
 		this.evaluationdate = LocalDateTime.now();
@@ -77,8 +70,7 @@ public class Rating implements Serializable, Identifiable<Integer>
 	@Override
 	public String toString()
 	{
-		return "Rating [ratingID=" + this.ratingID
-				+ ", evaluator=" + this.evaluator + ", yogurt=" + this.yogurt
+		return "Rating [ratingID=" + this.ratingID + ", evaluator=" + this.evaluator
 				+ ", rating=" + this.rating + ", message=" + this.message
 				+ ", evaluationDate=" + this.evaluationdate + "]";
 	}
@@ -95,7 +87,6 @@ public class Rating implements Serializable, Identifiable<Integer>
 		final Rating other = (Rating) object;
 		return Objects.equals(this.ratingID, other.getID())
 			&& Objects.equals(this.evaluator, other.getEvaluator())
-			&& Objects.equals(this.yogurt, other.getYogurt())
 			&& Objects.equals(this.rating, other.getRating())
 			&& Objects.equals(this.message, other.getMessage())
 			&& Objects.equals(this.evaluationdate, other.getEvaluationdate());
@@ -104,8 +95,8 @@ public class Rating implements Serializable, Identifiable<Integer>
 	@Override
 	public int hashCode()
 	{
-		return Objects.hash(this.ratingID, this.evaluator, this.yogurt,
-							this.rating, this.message, this.evaluationdate);
+		return Objects.hash(this.ratingID, this.evaluator, this.rating,
+							this.message, this.evaluationdate);
 	}
 
 
@@ -118,11 +109,6 @@ public class Rating implements Serializable, Identifiable<Integer>
 	public User getEvaluator()
 	{
 		return this.evaluator;
-	}
-
-	public Yogurt getYogurt()
-	{
-		return this.yogurt;
 	}
 
 	public int getRating()

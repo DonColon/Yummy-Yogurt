@@ -53,7 +53,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="mixer.html">
-                                <span class="fas fa-prescription-bottle"></span> Mixer
+                                <span class="fas fa-blender"></span> Mixer
                             </a>
                         </li>
                         <li class="nav-item">
@@ -66,10 +66,16 @@
                                 <span class="fas fa-shopping-cart"></span> Warenkorb
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../sign-in.html">
-                                <span class="far fa-user-circle"></span> Anmelden
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-user-circle"></span> {{user.username}}
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="profile-dropdown">
+                            	<a class="dropdown-item" href="profile.html">Profil</a>
+                            	<a class="dropdown-item" href="profile-setting.html">Profileinstellungen</a>
+                            	<div class="dropdown-divider"></div>
+                            	<a class="dropdown-item" href="logout">Abmelden</a>
+                            </div>
                         </li>
                     </ul>
                 </div>

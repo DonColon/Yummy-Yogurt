@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import de.fh.albsig.dardan.persistence.UserManager;
-import de.fh.albsig.dardan.persistence.exception.DatabaseException.NoSuchRow;
-import de.fh.albsig.dardan.persistence.exception.DatabaseException.TooManyRows;
+import de.fh.albsig.dardan.persistence.exception.DatabaseException;
 import de.fh.albsig.dardan.persistence.model.User;
 import de.fh.albsig.dardan.web.listener.ServiceContext;
 
@@ -59,7 +58,7 @@ public final class Login extends HttpServlet
 
 			}
 
-		} catch (NoSuchRow | TooManyRows e) {
+		} catch (DatabaseException.NoSuchRow | DatabaseException.TooManyRows e) {
 
 			final RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/sign-in.html");
 			dispatcher.include(request, response);

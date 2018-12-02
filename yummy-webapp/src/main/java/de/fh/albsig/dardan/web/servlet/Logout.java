@@ -18,6 +18,13 @@ public final class Logout extends HttpServlet
 
 
 	@Override
+	protected void doGet(final HttpServletRequest request, final HttpServletResponse response)
+			throws ServletException, IOException
+	{
+		this.doPost(request, response);
+	}
+
+	@Override
 	protected void doPost(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException
 	{

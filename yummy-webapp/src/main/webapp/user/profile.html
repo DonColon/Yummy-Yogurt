@@ -26,7 +26,7 @@
     <script src="../vendor/angular/angular-1.7.5.min.js"></script>
 </head>
 
-<body>
+<body  ng-app="profile-app" ng-controller="profile-controller">
     <!-- Main Header -->
     <header class="sticky-top bg-light">
         <!-- Main Navigation -->
@@ -53,7 +53,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="mixer.html">
-                                <span class="fas fa-prescription-bottle"></span> Mixer
+                                <span class="fas fa-blender"></span> Mixer
                             </a>
                         </li>
                         <li class="nav-item">
@@ -66,10 +66,16 @@
                                 <span class="fas fa-shopping-cart"></span> Warenkorb
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../sign-in.html">
-                                <span class="far fa-user-circle"></span> Anmelden
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-user-circle"></span> {{user.username}}
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="profile-dropdown">
+                            	<a class="dropdown-item" href="profile.html">Profil</a>
+                            	<a class="dropdown-item" href="profile-setting.html">Profileinstellungen</a>
+                            	<div class="dropdown-divider"></div>
+                            	<a class="dropdown-item" href="logout">Abmelden</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -78,7 +84,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container" ng-app="profile-app" ng-controller="profile-controller">
+    <main class="container">
         <h1 class="mt-4 mb-3">Profil</h1>
 
         <ol class="breadcrumb">
@@ -108,7 +114,7 @@
             </div>
         </section>
 
-        <hr class="seperator"/>
+        <!-- hr class="seperator"/>
         <h2 class="mt-4 mb-3 text-center">Zuletzt bestellt</h2>
         <hr class="seperator"/>
 
@@ -188,47 +194,31 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section-->
 
         <hr class="seperator"/>
         <h2 class="mt-4 mb-3 text-center">Meine Kreationen</h2>
         <hr class="seperator"/>
 
         <section class="row">
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-3" ng-repeat="yogurt in yogurts">
                 <div class="card h-100 bg-light">
-                    <a href="../product-info.html"><img class="img-fluid" src="../images/yogurts/yogurt-08.jpg" alt="Banana Awesome"/></a>
+                    <a href="../product-info.html?id={{yogurt.id}}"><img class="img-fluid" src="../images/yogurts/yogurt-07.jpg" alt="{{yogurt.name}}"/></a>
                     <div class="card-body">
-                        <h5 class="card-title"><a href="../product-info.html">Banana Awesome</a></h5>
-                        <h6 class="card-subtitle mb-3 text-muted">by DonColon</h6>
-                        <p class="card-text">Bananen-Joghurt, Banane, Schokobomben, Schokostreusel</p>
-                        <p class="card-text"><strong>Preis: 3,50€</strong></p>
+                        <h5 class="card-title"><a href="../product-info.html?id={{yogurt.id}}">{{yogurt.name}}</a></h5>
+                        <h6 class="card-subtitle mb-3 text-muted">by {{yogurt.owner.username}}</h6>
+                        <p class="card-text">
+							<span ng-repeat="ingredient in yogurt.recipe">{{ingredient.name}}, </span>
+						</p>
+                        <p class="card-text"><strong>Preis: {{convertToEuro(yogurt.priceInCents)}} €</strong></p>
+                         <span class="badge badge-danger font-harman-simple p-2">Früchte</span>
                     </div>
-                    <div class="card-footer text-center">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                <div class="card h-100 bg-light">
-                    <a href="../product-info.html"><img class="img-fluid" src="../images/yogurts/yogurt-02.jpg" alt="Nuts Royal"/></a>
-                    <div class="card-body">
-                        <h5 class="card-title"><a href="../product-info.html">Nuts Royal</a></h5>
-                        <h6 class="card-subtitle mb-3 text-muted">by DonColon</h6>
-                        <p class="card-text">Nuccio-Joghurt, Walnüsse, Haselnuss, Nougatsoße</p>
-                        <p class="card-text"><strong>Preis: 3,50€</strong></p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
+                    <div class="card-footer text-center" ng-init="setAverageRating(yogurt.ratings);">
+						<span id="star0"></span>
+                        <span id="star1"></span>
+                        <span id="star2"></span>
+                        <span id="star3"></span>
+                        <span id="star4"></span>
                     </div>
                 </div>
             </div>
@@ -278,7 +268,33 @@
 	                $scope.user = response.data;
 	            }
             );
+            
+            $http.get('http://localhost:8080/yummy-webapp/services/yogurts/')
+            	.then(function(response) {
+					$scope.yogurts = response.data;
+				}
+            );
+            
+            $scope.convertToEuro = function(priceInCents) {
+				var priceInEuro = priceInCents / 100;
+				return priceInEuro.toFixed(2);
+			}
         });
+        
+        function setAverageRating(ratings) {
+        	console.log('Hallo');
+        	var average = 0;
+        	for(value in ratings) {
+        		average += value.rating;
+        	}
+        	average /= ratings.length;
+        	
+        	for(var i = 0; i < average; i++) {
+        		
+        		var star = angular.element('#star' + i);
+        		star.addClass('fas fa-star');
+        	}
+        }
     </script>
 </body>
 

@@ -61,7 +61,7 @@ public class YogurtManager extends GenericManager<Integer, Yogurt>
 	public List<Yogurt> listByOwner(final String username)
 	{
 		final TypedQuery<Yogurt> query = this.manager.createNamedQuery(
-				"Yogurt.findByUser", this.entityClass);
+				"Yogurt.listByOwner", this.entityClass);
 		query.setParameter("username", username);
 		return query.getResultList();
 	}

@@ -26,14 +26,14 @@
     <script src="../vendor/angular/angular-1.7.5.min.js"></script>
 </head>
 
-<body>
+<body ng-app="profile-app" ng-controller="profile-controller">
     <!-- Main Header -->
     <header class="sticky-top bg-light">
         <!-- Main Navigation -->
         <nav class="navbar navbar-expand-lg navbar-light font-harman-simple">
             <div class="container">
                 <a class="navbar-brand" href="../index.html">
-                    <img src="images/yummy-yogurt-logo-4.png" height="50" alt="Yummy Yogurt"/>
+                    <img src="../images/yummy-yogurt-logo-4.png" height="50" alt="Yummy Yogurt"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar"
                         aria-controls="main-navbar" aria-expand="false" aria-label="Navigation">
@@ -53,7 +53,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="mixer.html">
-                                <span class="fas fa-prescription-bottle"></span> Mixer
+                                <span class="fas fa-blender"></span> Mixer
                             </a>
                         </li>
                         <li class="nav-item">
@@ -66,10 +66,16 @@
                                 <span class="fas fa-shopping-cart"></span> Warenkorb
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../sign-in.html">
-                                <span class="far fa-user-circle"></span> Anmelden
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="profile-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="fas fa-user-circle"></span> {{user.username}}
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="profile-dropdown">
+                            	<a class="dropdown-item" href="profile.html">Profil</a>
+                            	<a class="dropdown-item" href="profile-setting.html">Profileinstellungen</a>
+                            	<div class="dropdown-divider"></div>
+                            	<a class="dropdown-item" href="logout">Abmelden</a>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -93,23 +99,23 @@
                         <div class="row">
                             <div class="col">
                                 <label for="firstname"><strong>Vorname:</strong></label>
-                                <input class="form-control" type="text" name="firstname" id="firstname" value="Dardan"/>
+                                <input class="form-control" type="text" name="firstname" id="firstname" value="{{user.firstname}}"/>
                             </div>
                             <div class="col">
                                 <label for=""><strong>Nachname:</strong></label>
-                                <input class="form-control" type="text" name="familyname" id="familyname" value="Rrafshi"/>
+                                <input class="form-control" type="text" name="familyname" id="familyname" value="{{user.familyname}}"/>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="username"><strong>Benutzername:</strong></label>
-                        <input class="form-control" type="text" name="username" id="username" value="DonColon"/>
+                        <input class="form-control" type="text" name="username" id="username" value="{{user.username}}"/>
                     </div>
 
                     <div class="form-group">
                         <label for=""><strong>E-Mail:</strong></label>
-                        <input class="form-control" type="email" name="email" id="email" value="drrafshi@hotmail.de"/>
+                        <input class="form-control" type="email" name="email" id="email" value="{{user.email}}"/>
                     </div>
 
                     <hr/>
@@ -118,18 +124,18 @@
                         <label><strong>Adresse:</strong></label>
                         <div class="row mb-3">
                             <div class="col">
-                                <input class="form-control" type="text" name="streetname" id="streetname" placeholder="Straßenname"/>
+                                <input class="form-control" type="text" name="streetname" id="streetname" value="{{user.address.streetname}}" placeholder="Straßenname"/>
                             </div>
                             <div class="col">
-                                <input class="form-control" type="text" name="streetnumber" id="streetnumber" placeholder="Straßennummer"/>
+                                <input class="form-control" type="text" name="streetnumber" id="streetnumber" value="{{user.address.streetnumber}}" placeholder="Straßennummer"/>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <input class="form-control" type="text" name="postalcode" id="postalcode" placeholder="PLZ"/>
+                                <input class="form-control" type="text" name="postalcode" id="postalcode" value="{{user.address.postalcode}}" placeholder="PLZ"/>
                             </div>
                             <div class="col">
-                                <input class="form-control" type="text" name="city" id="city" placeholder="Wohnort"/>
+                                <input class="form-control" type="text" name="city" id="city" value="{{user.address.city}}" placeholder="Wohnort"/>
                             </div>
                         </div>
                     </div>
@@ -193,6 +199,17 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="../vendor/bootstrap/bootstrap.min.js"></script>
+    
+    <script type="text/javascript">
+        var app = angular.module('profile-app', []);
+        app.controller('profile-controller', function($scope, $http) {
+            $http.get('http://localhost:8080/yummy-webapp/services/users')
+	            .then(function(response) {
+	                $scope.user = response.data;
+	            }
+            );
+        });
+    </script>
 </body>
 
 </html>
